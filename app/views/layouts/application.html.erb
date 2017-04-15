@@ -1,32 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <!-- Title -->
+  <title>A&amp;M Chess Store: <%= controller.controller_name.capitalize %></title>
+  <!-- Meta Data -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+  <meta name="description" content="Alex and Mark Chess Store Information Systems Application Design and Development">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  <%= stylesheet_link_tag    "application" %>
+  <%= csrf_meta_tags %>
+  <%= render 'partials/favicon' %>
+</head>
 
-    <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-    <div id="title_area">
-      <%= link_to image_tag('chess_store_title.png'), home_path %>
+<body>
+  <div class="sidebar" id="mySidebar">
+    <div id="logo">
+      <%= link_to( image_tag("logo.png"), home_path) %>
     </div>
-    <%= render :partial => "partials/nav" %>
-    
-    <div class="row">
-      <div class="small-12 columns" id="main_content">
-        <%= render :partial => "partials/flash" %>
-        <%= yield %>
+    <div id="nav-icon" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="cart-icon" onclick="toggleCart()">
+      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div id="mySidenav" class="sidenav">
+    <a>A&amp;M Chess Store</a>
+    <br>
+    <div id="menu-items">
+      <%= link_to 'About', about_path %>
+      <a onclick="toggleStoreMenu()">Store</a>
+      <%= link_to 'Privacy', privacy_path %>
+      <%= link_to 'Contact', contact_path %>
+      <br>
+      <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+    </div>
+  </div>
+
+  <div id="store-menu" class="subsidenav">
+    <a href="">Pieces</a>
+    <a href="">Boards</a>
+    <a href="">Clocks</a>
+    <a href="">Supplies</a>
+  </div>
+
+  <div id="cart-menu" class="cartmenu">
+    <div class="content">
+      <div>
+        <h1>YOUR CART</h1>
+        <hr>
+      </div>
+      <div id="cart-items">
+        
+      </div>
+      <hr>
+      <div id="total">
+        <span>TOTAL</span><span>$123.00</span>
+      </div>
+      <div id="checkout">
+        <div class="button_sliding_bg">Pay Now</div>
       </div>
     </div>
-    <footer>
-      <div class="small-12 columns" id="footer">
-        <%= render partial: 'partials/footer' %>
+  </div>
+
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="loginmodal-container">
+        <h1>Login to Your Account</h1><br>
+        <form>
+          <input type="text" id="usernameInput" name="user" placeholder="Username">
+          <input type="password" name="pass" placeholder="Password">
+          <input type="submit" name="login" class="button_sliding_bg loginmodal-submit" value="Login">
+        </form>
       </div>
-    </footer> 
-    <%= javascript_include_tag "application" %>
-  </body>
+    </div>
+  </div>
+
+  <div id="overlay" onclick="closeMenus()"></div>
+
+  <main>
+    <div class="container">
+    <%= render :partial => "partials/flash" %>
+    <%= yield %>
+    </div>
+  </main>
+<!-- Javascript -->
+<!-- JQUERY -->
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Custom -->
+<%= javascript_include_tag "application" %>
+</body>
 </html>
