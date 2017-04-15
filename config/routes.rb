@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  
+
+  get 'user/new'
+  get 'user/create'
+  get 'user/edit'
+  get 'user/update'
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
+
   # Routes for main resources
   resources :items
   resources :purchases
@@ -11,6 +19,13 @@ Rails.application.routes.draw do
   get 'contact' => 'home#contact', as: :contact
   get 'privacy' => 'home#privacy', as: :privacy
   
+  resources :users
+  resources :sessions
+  get 'user/edit' => 'users#edit', :as => :edit_current_user
+  get 'signup' => 'users#new', :as => :signup
+  get 'login' => 'sessions#new', :as => :login
+  get 'logout' => 'sessions#destroy', :as => :logout
+
   # Set the root url
   root :to => 'home#home'  
 

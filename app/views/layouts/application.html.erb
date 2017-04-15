@@ -77,11 +77,11 @@
     <div class="modal-dialog">
       <div class="loginmodal-container">
         <h1>Login to Your Account</h1><br>
-        <form>
-          <input type="text" id="usernameInput" name="user" placeholder="Username">
-          <input type="password" name="pass" placeholder="Password">
-          <input type="submit" name="login" class="button_sliding_bg loginmodal-submit" value="Login">
-        </form>
+        <%= form_tag sessions_path do %>
+          <%= text_field_tag :login, params[:login], placeholder:"Username" %>
+          <%= password_field_tag(:password, "", placeholder: "Password") %>
+          <%= submit_tag "Log in", class: "button_sliding_bg loginmodal-submit" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -89,8 +89,8 @@
   <div id="overlay" onclick="closeMenus()"></div>
 
   <main>
-    <div class="container">
     <%= render :partial => "partials/flash" %>
+    <div class="container">
     <%= yield %>
     </div>
   </main>

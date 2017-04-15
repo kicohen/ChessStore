@@ -144,81 +144,6 @@ main{
   margin: 25%;
 }
 
-.col-height{
-  height: 32vh;
-  margin: 0;
-  padding: 0;
-}
-
-.parent{
-  width: 100%;
-  height: 100%;
-}
-
-.parent:hover .colimage,
-.parent:focus .colimage {
-  transform: scale(1.2);
-}
-
-.parent {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    float: left;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.colimage {
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    -o-transition: all .5s;
-    transition: all .5s;
-}
-
-.parent:hover .colimage, .parent:focus .colimage {
-    -ms-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
-.colimage1{
-  background: url("../images/chess3.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-}
-
-.colimage2{
-  background: url("../images/chess4.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 90% 50%;
-}
-
-.colimage3{
-  background: url("../images/chess5.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-}
-
-.parent span{
-  color: white;
-  font-weight: 100;
-  font-size: 2.5em;
-  position: relative;
-  left: 20px;
-  bottom: 60px;
-}
-
 #overlay{
   position: fixed;
   left: 0;
@@ -414,7 +339,91 @@ main{
   width: 100%;
 }
 
+main{
+  min-height: 100vh;
+}
+
+.no_rounded{
+  border-radius: 0;
+}
+
 /* Page Specific CSS */
+
+/* Home Page */
+
+.col-height{
+  margin: 0;
+  padding: 0;
+}
+
+.parent{
+  width: 100%;
+  height: 100%;
+}
+
+.parent:hover .colimage,
+.parent:focus .colimage {
+  transform: scale(1.2);
+}
+
+.parent {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.colimage {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+.parent:hover .colimage, .parent:focus .colimage {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.colimage1{
+  background-image: image-url('chess3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.colimage2{
+  background-image: image-url('chess4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 90% 50%;
+}
+
+.colimage3{
+  background-image: image-url('chess5.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.parent span{
+  color: white;
+  font-weight: 100;
+  font-size: 2.5em;
+  position: relative;
+  left: 20px;
+  bottom: 60px;
+}
 
 /* Login */
 .full_height{

@@ -105,3 +105,7 @@ $('#login-modal').on('shown.bs.modal', function () {
         document.getElementById('usernameInput').focus();
     }, 0);
 })
+
+$("#alert").fadeTo(2000, 500).slideUp(500, function(){
+  $("#alert").slideUp(500);
+});   

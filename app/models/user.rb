@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
   # Callbacks
   before_destroy :is_never_destroyable
   before_save :reformat_phone
+
+  def self.authenticate(email,password)
+      find_by_email(email).try(:authenticate, password)
+  end
   
   private
   def reformat_phone
