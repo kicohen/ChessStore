@@ -43,7 +43,11 @@
       <%= link_to 'Privacy', privacy_path %>
       <%= link_to 'Contact', contact_path %>
       <br>
-      <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+      <% if logged_in? %>
+        <%= link_to 'Logout', logout_path %>
+      <% else %>
+        <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+      <% end %>
     </div>
   </div>
 
@@ -90,6 +94,9 @@
 
   <main>
     <%= render :partial => "partials/flash" %>
+    <% if logged_in? %>
+      <%= current_user.role %>
+    <% end %>
     <div class="container">
     <%= yield %>
     </div>

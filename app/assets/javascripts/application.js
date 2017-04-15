@@ -20,8 +20,10 @@ function showOverlay(){
 }
 
 function hideOverlay(){
-  overlay.style.zIndex = "-1";
   overlay.style.backgroundColor = "rgba(0,0,0,0)";
+  setTimeout(function() {
+      overlay.style.zIndex = "-1";
+  }, 450); 
 }
 
 function toggleOverlay(){
@@ -85,14 +87,16 @@ function openCart(){
 
 function closeCart(){
   cartmenu.style.width = "0";
-  sidebar.style.zIndex = "100";
   cartmenu.style.paddingRight = "0px";
+  setTimeout(function() {
+      sidebar.style.zIndex = "100";
+  }, 500); 
 }
 
 function toggleCart(){
   if (cartmenu.style.width == "300px"){
-    closeCart();
     toggleOverlay();
+    closeCart();
   } else {
     openCart();
     toggleOverlay();

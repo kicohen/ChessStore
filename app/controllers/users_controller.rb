@@ -7,7 +7,7 @@ before_filter :login_required, except: [:new, :create]
 
   def create
     @user = User.new(user_params)
-    @user.role = "customer`"
+    @user.role = "customer"
     if @user.save
       session[:user_id] = @user.id
       redirect_to home_path, notice: "Thank you for signing up! You are now logged in."

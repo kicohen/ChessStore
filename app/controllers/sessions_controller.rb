@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to home_path, notice: "Logged in successfully."
     else
       flash.now[:alert] = "Invalid login or password."
-      render action: 'new'
+      redirect_to home_path, alert: "Invalid login or password."
     end
   end
 
