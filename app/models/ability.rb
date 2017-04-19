@@ -36,8 +36,6 @@ class Ability
         can :manage, :all
     elsif user.role? :manager
         can :read, :all
-    elsif user.role? :customer
-        can :read, :all
     else
         can :read, :all
     end
