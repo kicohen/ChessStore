@@ -55,6 +55,15 @@ html, body{
   text-align: center;
 }
 
+#menu a{
+  color: white;
+  text-decoration: none;
+}
+
+#menu a:hover{
+  color: #ccc;
+}
+
 #menu div{
   -webkit-clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);  
 }
@@ -122,7 +131,6 @@ html, body{
 
 #menu.shown div:hover{
   background-color: #002745;
-  color: #ccc;
 }
 
 #menu.shown:hover{
@@ -174,7 +182,6 @@ html, body{
 
 #search{
   width: 50%;
-  height: 60px;
   position: fixed;
   top: calc(30vh - 80px);
   left: 25%;
@@ -209,8 +216,8 @@ html, body{
 
 main{
   min-height: calc(100vh - 16px);
-  width: calc(100% - 14px);
-  margin: 0px;
+  width: 80%;
+  margin: 5% 10% 10% 10%;
   padding: 10px;
 }
 

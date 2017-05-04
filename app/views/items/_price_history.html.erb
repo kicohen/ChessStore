@@ -1,12 +1,13 @@
 <% unless @price_history.empty? %>
   <div class="panel clearfix">
-    <h3>Price History</h3>
-    <ul>
+    <ul class="list-group">
+      <li class="list-group-item active"> Price History</li>
       <% @price_history.each do |change| %>
+      <li class="list-group-item">
         <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
+      </li>
       <% end %>
     </ul>
-
-    <%= link_to("Change Price", new_item_price_path(this_item_id: @item.id), class: 'button tiny radius') %>
+    <!-- <%= link_to("Change Price", new_item_price_path(this_item_id: @item.id), class: 'button tiny radius') %> -->
   </div>
 <% end %>
