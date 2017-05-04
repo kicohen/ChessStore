@@ -1,115 +1,102 @@
-var overlay = document.getElementById('overlay');
-var sidebar = document.getElementById('mySidebar');
-var sidenav = document.getElementById('mySidenav');
-var storemenu = document.getElementById('store-menu');
-var carticon = document.getElementById('cart-icon');
-var cartmenu = document.getElementById('cart-menu');
+document.addEventListener("click", toggleMenu);
+var menu = document.getElementById('menu');
+var search = document.getElementById('search');
+var searchInput = document.getElementById('searchInput');
+var displayMenu = false;
+var shftIsPressed = false;
 
-function closeMenus(){
-  closeNav();
-  closeCart();
-  if (overlay.style.zIndex != "50"){
-    hideOverlay();
-  }
-  $('#nav-icon').removeClass('open');
+function showMenu(position){
+  menu.style.left = position.clientX - 150 + 'px';
+  menu.style.top = position.clientY - 150 + 'px';
+    menu.classList = 'shown';
 }
 
-function showOverlay(){
-  overlay.style.zIndex = "50";
-  overlay.style.backgroundColor = "rgba(0,0,0,0.5)";  
+function hideMenu(){
+    menu.classList = '';
 }
 
-function hideOverlay(){
-  overlay.style.backgroundColor = "rgba(0,0,0,0)";
-  setTimeout(function() {
-      overlay.style.zIndex = "-1";
-  }, 450); 
+function showSearch(){
+  search.classList = '';
+  searchInput.focus();
+  searchInput.value = '';
 }
 
-function toggleOverlay(){
-  if (overlay.style.zIndex != "50"){
-    showOverlay();   
+function hideSearch(){
+  search.classList = 'hide';
+}
+
+function toggleSearch(){
+  if (search.classList == ''){
+    hideSearch();
   } else {
-    hideOverlay();
+    showSearch();
   }
 }
 
-function openNav() {
-    toggleOverlay();
-    sidenav.style.width = "300px";
-    sidebar.style.backgroundColor = "#313945";
-    carticon.style.color = 'white';
-}
-
-function closeNav() {
-    if (storemenu.style.width != "0px"){
-      toggleStoreMenu();
-      setTimeout(function() {
-          sidenav.style.width = "0";
-          sidebar.style.backgroundColor = "white";
-          carticon.style.color = 'black';
-          toggleOverlay();
-      }, 450); 
-    } else {
-      sidenav.style.width = "0";
-      sidebar.style.backgroundColor = "white";
-      carticon.style.color = 'black';
-      toggleOverlay();
+$(document).keydown(function(event){
+    if(event.which=="16")
+        shftIsPressed = true;
+    if (event.which=="32"&&shftIsPressed){
+      event.preventDefault();
+      toggleSearch();
     }
-}
+});
 
-function toggleNav(){
-  if (sidenav.style.width != "300px") {
-    openNav();
-    $('#nav-icon').toggleClass('open');
-  } else {
-    closeNav();
-    $('#nav-icon').toggleClass('open');
+$(document).keyup(function(){
+    shftIsPressed = false;
+});
+
+function toggleMenu(position) {
+  if (displayMenu) {
+    hideMenu();
+  } else if (shftIsPressed) {
+    showMenu(position);
   }
+  hideSearch();
+  displayMenu = !displayMenu;
 }
 
-function toggleStoreMenu() {
-  if (storemenu.style.width == '0px'){
-    storemenu.style.width = '300px';
-  } else {
-    storemenu.style.width = '0px';
-  }
-}
+// JAVASCRIPT (jQuery)
 
-function openCart(){
-  if (sidenav.style.width == "300px") {
-    closeNav();
-  }
-  cartmenu.style.width = "300px";
-  cartmenu.style.paddingRight = "20px";
-  sidebar.style.zIndex = "1";
-}
+// Trigger action when the contexmenu is about to be shown
+$(document).bind("contextmenu", function (event) {
+    
+    // Avoid the real one
+    event.preventDefault();
+    
+    // Show contextmenu
+    $(".custom-menu").finish().toggle(100).
+    
+    // In the right position (the mouse)
+    css({
+        top: event.pageY + "px",
+        left: event.pageX + "px"
+    });
+});
 
-function closeCart(){
-  cartmenu.style.width = "0";
-  cartmenu.style.paddingRight = "0px";
-  setTimeout(function() {
-      sidebar.style.zIndex = "100";
-  }, 500); 
-}
+// If the document is clicked somewhere
+$(document).bind("mousedown", function (e) {
+    
+    // If the clicked element is not the menu
+    if (!$(e.target).parents(".custom-menu").length > 0) {
+        
+        // Hide it
+        $(".custom-menu").hide(100);
+    }
+});
 
-function toggleCart(){
-  if (cartmenu.style.width == "300px"){
-    toggleOverlay();
-    closeCart();
-  } else {
-    openCart();
-    toggleOverlay();
-  }
-}
-
-$('#login-modal').on('shown.bs.modal', function () {
-    window.setTimeout(function ()
-    {
-        document.getElementById('usernameInput').focus();
-    }, 0);
-})
-
-$("#alert").fadeTo(2000, 500).slideUp(500, function(){
-  $("#alert").slideUp(500);
-});   
+// If the menu element is clicked
+$(".custom-menu li").click(function(){
+    
+    // This is the triggered action name
+    switch($(this).attr("data-action")) {
+        
+        // A case for each action. Your actions here
+        case "first": alert("first"); break;
+        case "second": alert("second"); break;
+        case "third": alert("third"); break;
+    }
+  
+    // Hide it AFTER the action was triggered
+    $(".custom-menu").hide(100);
+  });

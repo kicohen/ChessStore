@@ -1,0 +1,216 @@
+/* CSS3 */
+html, body{
+  overflow-x: hidden;
+}
+
+
+/* The whole thing */
+.custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+
+/* Each of the items in the list */
+.custom-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+}
+
+.custom-menu li:hover {
+    background-color: #DEF;
+}
+
+*{
+  font-family: 'Roboto';
+  font-weight: 300;
+}
+
+#menu{
+  width: 400px;
+  height: 400px;
+  position: fixed;
+}
+
+#menu div{
+  transition: all 0.6s cubic-bezier(.7,.3,0,1);
+  transition-property: -webkit-clip-path;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+#menu div{
+  -webkit-clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);  
+}
+
+#menu.shown div{
+  -webkit-clip-path: polygon(50% 50%, 34.69% 13%, 34.69% 13%, 65.3% 13%, 65.3% 13%);
+}
+
+#menu.shown div:hover{
+  -webkit-clip-path: polygon(50% 50%, 34.69% 13%, 34.69% 3.8%, 65.3% 3.8%, 65.3% 13%);
+}
+
+#menu.shown div:nth-child(1){
+  background-color: #0078D5; 
+}
+
+#menu.shown div:nth-child(2){
+    -ms-transform: rotate(-45deg); /* IE 9 */
+    -webkit-transform: rotate(-45deg); /* Safari */
+    transform: rotate(-45deg); /* Standard syntax */
+    background-color: #00589C;
+}
+
+#menu.shown div:nth-child(3){
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Safari */
+    transform: rotate(-90deg); /* Standard syntax */
+    background-color: #00467B;
+}
+
+#menu.shown div:nth-child(4){
+    -ms-transform: rotate(-135deg); /* IE 9 */
+    -webkit-transform: rotate(-135deg); /* Safari */
+    transform: rotate(-135deg); /* Standard syntax */ 
+  background-color: #219DFC;
+}
+
+#menu.shown div:nth-child(5){
+    -ms-transform: rotate(-180deg); /* IE 9 */
+    -webkit-transform: rotate(-180deg); /* Safari */
+    transform: rotate(-180deg); /* Standard syntax */
+    background-color: #0078D5;
+}
+
+#menu.shown div:nth-child(6){
+    -ms-transform: rotate(-225deg); /* IE 9 */
+    -webkit-transform: rotate(-225deg); /* Safari */
+    transform: rotate(-225deg); /* Standard syntax */
+    background-color: #00589C;
+}
+
+#menu.shown div:nth-child(7){
+    -ms-transform: rotate(-270deg); /* IE 9 */
+    -webkit-transform: rotate(-270deg); /* Safari */
+    transform: rotate(-270deg); /* Standard syntax */
+    background-color: #00467B;
+}
+
+#menu.shown div:nth-child(8){
+    -ms-transform: rotate(-315deg); /* IE 9 */
+    -webkit-transform: rotate(-315deg); /* Safari */
+    transform: rotate(-315deg); /* Standard syntax */
+    background-color: #219DFC;
+}
+
+#menu.shown div:hover{
+  background-color: #002745;
+  color: #ccc;
+}
+
+#menu.shown:hover{
+  animation-play-state: paused;
+}
+
+#menu.shown {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 20000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 20000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 20000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 20000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;       
+    transform 5.8s ease-in-out;
+}
+
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+
+#search{
+  width: 50%;
+  height: 60px;
+  position: fixed;
+  top: calc(30vh - 80px);
+  left: 25%;
+  background-color: #22231D;
+  color: #757575;
+  font-size: 3em;
+  padding: 15px; 
+}
+
+.hide{
+  display: none;
+}
+
+#search input{
+  width: calc(100% - 70px);
+  padding-left: 15px;
+  background-color: #22231D;
+  font-size: 1em;
+  color: white;
+  border: 0;
+  outline: none;
+}
+
+.right {
+    position: fixed;
+    -webkit-transform-origin: 100% 100%;
+    -webkit-transform: rotate(-90deg);
+    right: 10px;
+    top: calc(50vh - 194px);
+}
+
+
+main{
+  min-height: calc(100vh - 16px);
+  width: calc(100% - 14px);
+  margin: 0px;
+  padding: 10px;
+}
+

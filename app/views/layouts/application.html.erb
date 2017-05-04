@@ -8,113 +8,85 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
   <meta name="description" content="Alex and Mark Chess Store Information Systems Application Design and Development">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Bootstrap -->
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'partials/favicon' %>
 </head>
 
 <body>
-  <div class="sidebar" id="mySidebar">
-    <div id="logo">
-      <%= link_to( image_tag("logo.png"), home_path) %>
-    </div>
-    <div id="nav-icon" onclick="toggleNav()">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <% if not logged_in? or current_user.role == "customer" %>
-    <div id="cart-icon" onclick="toggleCart()">
-    <% else %>
-    <div id="cart-icon" onclick="toggleCart()" style="display: none">
-    <% end %>
-      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-    </div>
-  </div>
 
-  <div id="mySidenav" class="sidenav">
-    <a>A&amp;M Chess Store</a>
+<!-- Side Heading -->
+<div id="main-heading">
+  <h1 class="right">A&amp;M Chess Store</h1>
+</div>
+
+<main>
+  <%= render :partial => "partials/flash" %>
+  <%= yield %>
+</main>
+
+<!-- Spotlight Search -->
+<div id="search" class="hide">
+  <span class="fa fa-search"></span><input id="searchInput" type="text" name="" placeholder="Search">
+</div>
+
+<!-- Navigation Circle -->
+<div id="menu">
+  <div class="menu-item">
     <br>
-    <div id="menu-items">
-      <% if not logged_in? or current_user.role == "customer" %>
-      <%= render :partial => "partials/guest_nav" %>
-      <% elsif current_user.role == "manager" %>
-      <%= render :partial => "partials/manager_nav" %>
-      <% elsif current_user.role == "shipper" %>
-      <%= render :partial => "partials/shipper_nav" %>
-      <% elsif current_user.role == "admin" %>
-      <%= render :partial => "partials/admin_nav" %>
-      <% end %>
-      <br>
-      <% if logged_in? %>
-        <%= link_to 'Logout', logout_path %>
-      <% else %>
-        <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-      <% end %>
-    </div>
+    <span>Home</span>
+    <p><span class="fa fa-home fa-3x"></span></p>
   </div>
-
-  <div id="store-menu" class="subsidenav">
-    <a href="">Pieces</a>
-    <a href="">Boards</a>
-    <a href="">Clocks</a>
-    <a href="">Supplies</a>
+  <div class="menu-item">
+    <br>
+    <span>Dashboard</span>
+    <p><span class="fa fa-tachometer fa-3x"></span></p>
   </div>
-
-  <div id="cart-menu" class="cartmenu">
-    <div class="content">
-      <div>
-        <h1>YOUR CART</h1>
-        <hr>
-      </div>
-      <div id="cart-items">
-        
-      </div>
-      <hr>
-      <div id="total">
-        <span>TOTAL</span><span>$123.00</span>
-      </div>
-      <div id="checkout">
-        <div class="button_sliding_bg">Pay Now</div>
-      </div>
-    </div>
+  <div class="menu-item">
+    <br>
+    <span>Prices</span>
+    <p><span class="fa fa-dollar fa-3x"></span></p>
   </div>
-
-
-  <% if not logged_in? %>
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-      <div class="loginmodal-container">
-        <h1>Login to Your Account</h1><br>
-        <%= form_tag sessions_path do %>
-          <%= text_field_tag :login, params[:login], placeholder:"Username" %>
-          <%= password_field_tag(:password, "", placeholder: "Password") %>
-          <%= submit_tag "Log in", class: "button_sliding_bg loginmodal-submit" %>
-        <% end %>
-      </div>
-    </div>
+  <div class="menu-item">
+    <br>
+    <span>Orders</span>
+    <p><span class="fa fa-shopping-cart fa-3x"></span></p>
   </div>
-  <% end %>
+  <div class="menu-item">
+    <br>
+    <span>Help</span>
+    <p><span class="fa fa-question-circle fa-3x"></span></p>
+  </div>
+  <div class="menu-item">
+    <br>
+    <span>Schools</span>
+    <p><span class="fa fa-graduation-cap fa-3x"></span></p>
+  </div>
+  <div class="menu-item">
+    <br>
+    <span>Users</span>
+    <p><span class="fa fa-users fa-3x"></span></p>
+  </div>
+  <div class="menu-item">
+    <br>
+    <span>Items</span>
+    <p><span class="fa fa-cubes fa-3x"></span></p>
+  </div>
+</div>
 
-  <div id="overlay" onclick="closeMenus()"></div>
-
-  <main>
-    <%= render :partial => "partials/flash" %>
-    <div class="container">
-    <%= yield %>
-    </div>
-  </main>
+<!-- Custom Right Click Menu -->
+<ul class='custom-menu'>
+  <li data-action="first">Add Item</li>
+  <li data-action="second">Edit Item</li>
+  <li data-action="third">Delete Item</li>
+</ul>
 <!-- Javascript -->
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Custom -->
 <%= javascript_include_tag "application" %>
 </body>
