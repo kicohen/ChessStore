@@ -1,22 +1,77 @@
 <% unless @orders.nil? || @orders.empty? %> 
-  <table class="table table-striped">
+  <table class="table">
       <thead class="bg-primary text-white">
         <tr>
+          <th>User</th>
           <th>School</th>
           <th>Total</th>
-          <th>Order</th>
+          <th>Date</th>
+          <th></th>
         </tr>
       </thead>
-      <tbody>
       <% @orders.each do |order| %>
-      <tr>
+        <tbody id="<%= order.id %>">
+        <tr class="bg-faded">
+          <td><%= order.user.name %></td>
           <td><%= link_to order.school.name, school_path(order.school) %></td>
           <td><%= number_to_currency order.grand_total %></td>
           <td><%= order.date %></td>
+          <td><span class="badge badge-success">+</span></td>
         </tr>
+        </tbody>
+        <tbody class="hide-table">
+            <tr class="">
+              <th colspan="2">Item</th>
+              <th>Quantity</th>
+              <th>Shipped On</th>
+              <th></th>
+            </tr>
+        <% order.order_items.each do |item| %>
+          <tr>
+            <td colspan="2"><%= link_to item.item.name, item_path(item.item) %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.shipped_on.nil? ? "N/A" : item.shipped_on %></td>
+            <td></td>
+          </tr>
+        <% end %>
+        </tbody>
       <% end %>
-      </tbody>
   </table>
 <br>
 <br>
 <% end %>
+
+<script type="text/javascript">
+  var tbodys = document.getElementsByTagName('tbody');
+  var buttons = document.getElementsByClassName('badge');
+  for (var i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener("click", showNextRow, false);
+  }
+
+  function showNextRow(e){
+    var tr;
+    for (var i = 0; i <tbodys.length; i++){
+      if (tbodys[i].id == e.target.parentElement.parentElement.parentElement.id){
+        tr = i;
+        break;
+      }
+    }
+    console.log(tr);
+    toggleOrderItems(tr+1, e);
+  }
+
+  function toggleOrderItems(tr, e){
+    if (tbodys[tr].className == ''){
+      tbodys[tr].className = 'hide-table';
+      e.target.classList = ['badge badge-success'];
+      e.target.textContent = "+";
+      console.log(e.target.innnerHTML);
+    } else {
+      tbodys[tr].className = '';
+      e.target.classList = ['badge badge-danger'];
+      e.target.textContent = "-";
+      console.log(e.target.innnerHTML);
+    }
+  }
+
+</script>

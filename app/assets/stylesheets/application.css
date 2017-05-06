@@ -389,3 +389,16 @@ input[type='tel'],input[type='text'],input[type='number'],input[type="password"]
 .select select:disabled ~ .select__arrow {
   border-top-color: #ccc;
 }
+
+
+.hide-table tr{
+  display: none;
+}
+
+.hide-table td{
+  display: none;
+}
+
+.hide-table{
+  display: none;
+}
