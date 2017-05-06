@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'employees/index'
+
+  get 'employees/show'
+
+  get 'employees/create'
+
+  get 'employees/new'
+
+  get 'employees/edit'
+
+  get 'employees/update'
+
   get 'user/new'
   get 'user/create'
   get 'user/edit'
@@ -15,6 +27,7 @@ Rails.application.routes.draw do
   resources :users
   resources :schools
   resources :orders
+  resources :employees
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home

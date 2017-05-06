@@ -1,4 +1,13 @@
-class UsersController < ApplicationController
+class EmployeesController < ApplicationController
+  before_action :set_employee, only: [:show, :edit, :update]
+
+  def index
+    @employees = User.active.employees.alphabetical
+  end
+
+  def show
+  end
+
   def new
     @user = User.new
   end
@@ -15,22 +24,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
-    if @user.update_attributes(user_params)
-      redirect_to home_path, notice: "Your profile has been updated."
-    else
-      render action: 'edit'
-    end
   end
 
   private
-  # Never trust parameters from the scary internet, only allow the white list through.
+  def set_employee
+    @employee = User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
   
+
 end

@@ -1,0 +1,25 @@
+<% if @employees.empty? %>
+  <h4>No employees at this time.</h4>
+<% else %>
+  <table class="table table-striped">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th width="225">Name</th>
+        <th width="150">Email</th>
+        <th width="150">Phone</th>
+        <th width="150">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= link_to employee.name , employee_path(employee) %></td>
+          <td><%= employee.email.nil? ? 'N/A' : employee.email %></td>
+          <td><%= employee.phone.nil? ? 'N/A' : number_to_phone(employee.phone) %></td>
+          <td><%= employee.role %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<p>&nbsp;</p>
