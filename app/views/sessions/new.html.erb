@@ -1,0 +1,20 @@
+<h3>Log In</h3>
+<div>
+  <div>
+    <%= form_tag sessions_path do %>
+      <div>
+        <div>
+          <%= text_field_tag :email, params[:email], placeholder: "Email" %>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <%= text_field_tag :password, params[:password], placeholder: "Password", class: "password-field-hack"  %>
+        </div>
+      </div>
+      
+      <div><%= submit_tag "Log In" %></div>
+    <% end %>
+  </div>
+</div>

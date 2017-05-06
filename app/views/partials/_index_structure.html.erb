@@ -1,5 +1,5 @@
-<div class="">
-  <div class="">
+<div>
+  <div>
     <!-- primary partial gets displayed here in main div -->
     <%= render partial: "#{primary}" %>
     <!-- sometimes we want another partial below -->
@@ -9,7 +9,7 @@
     <% end %>
     
   </div>
-  <div class="">
+  <div>
     <!-- render the sidebar, if it exists -->
     <%= render partial: "#{sidebar}" unless sidebar.blank? %>
   </div>

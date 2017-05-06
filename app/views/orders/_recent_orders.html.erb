@@ -1,0 +1,22 @@
+<% unless @orders.nil? || @orders.empty? %> 
+  <table class="table table-striped">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th>School</th>
+          <th>Total</th>
+          <th>Order</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+          <td><%= link_to order.school.name, school_path(order.school) %></td>
+          <td><%= number_to_currency order.grand_total %></td>
+          <td><%= order.date %></td>
+        </tr>
+      <% end %>
+      </tbody>
+  </table>
+<br>
+<br>
+<% end %>

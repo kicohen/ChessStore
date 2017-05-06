@@ -101,6 +101,27 @@ $(".custom-menu li").click(function(){
     $(".custom-menu").hide(100);
   });
 
+function changeType(){
+  console.log("changing type");
+  for (var i=0; i< passwords.length; i++){
+  if (passwords[0].type == "text"){
+    passwords[0].type = "password";
+  } else {
+    passwords[0].type = 'text';
+  }
+}
+}
+
+
+var passwords = document.getElementsByClassName('password-field-hack');
+console.log(passwords);
+if (passwords.length > 0){
+  for (var i=0; i< passwords.length; i++){
+  passwords[i].addEventListener("onfocus", changeType, false);
+  passwords[i].addEventListener("onfocusout", changeType, false);
+}
+}
+
 /**
  * Placeholdem - Placeholder Caret Animation
  * v1.0.2 - MIT License

@@ -1,19 +1,48 @@
 class OrdersController < ApplicationController
+  load_and_authorize_resource
+  before_action :set_item, only: [:show, :edit, :update]
+
   def index
+    @orders = Order.chronological
   end
 
   def new
-  end
-
-  def create
-  end
-
-  def update
+    @order = Order.new
   end
 
   def edit
   end
 
-  def show
+  def create
+    @order = Order.new(order_params)
+    
+    if @order.save
+      redirect_to order_path(@order), notice: "Successfully created new Order."
+    else
+      render action: 'new'
+    end
   end
+
+  def update
+    if @order.update(order_params)
+      redirect_to order_path(@order), notice: "Successfully updated Order."
+    else
+      render action: 'edit'
+    end
+  end
+
+  def show
+    @school = @order.school
+    @order_items = @order.order_items
+  end
+
+  private
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def order_params
+    params.require(:order).permit(:date, :school_id, :user_id, :grand_total, :payment_receipt, :credit_card_number, :expiration_year, :expiration_month)
+  end
+
 end

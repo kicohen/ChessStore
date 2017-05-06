@@ -1,0 +1,16 @@
+<%= simple_form_for @order, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Order</legend>
+
+    <%= f.input :school%>
+    <%= f.input :credit_card_number%>
+    <%= f.input :expiration_year %>
+    <%= f.input :expiration_month %>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-success full-width' %>
+      <br>
+      <br>
+      <%= link_to 'Cancel', orders_path, :class => 'btn btn-danger full-width' %>
+    </div>
+  </fieldset>
+<% end %>

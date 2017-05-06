@@ -9,7 +9,8 @@
     State:
     <%= f.input :state, collection: School::STATES_LIST, include_blank: true, label: false %>
     <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-success' %>
+      <%= f.submit nil, :class => 'btn btn-success full-width' %>
+      <br><br>
       <%= link_to 'Cancel', items_path, :class => 'btn btn-danger full-width' %>
     </div>
   </fieldset>
