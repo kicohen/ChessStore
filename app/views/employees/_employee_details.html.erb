@@ -1,0 +1,25 @@
+<div>
+  <div>
+    <h3><%= @employee.name %></h3>
+  </div>
+</div>
+
+<p>
+  <b>Email</b>: <%= @employee.email %>
+</p>
+
+<p>
+  <b>Phone</b>: <%= @employee.phone.nil? ? 'N/A' : number_to_phone(@employee.phone) %>
+</p>
+
+<p>
+  <b>Username</b>: <%= @employee.username %>
+</p>
+
+<p>
+  <b>Role</b>: <%= @employee.role %>
+</p>
+
+<p>
+  <b>Active</b>: <%= @employee.active %>
+</p>

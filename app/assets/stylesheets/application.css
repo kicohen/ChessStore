@@ -230,7 +230,7 @@ main{
   margin: 5px;
 }
 
-input[type='text'],input[type='number'],input[type="password"],input[type='email'], textarea, select {
+input[type='tel'],input[type='text'],input[type='number'],input[type="password"],input[type='email'], textarea, select {
     border-top: 2px solid #ddd;
     border-bottom: 2px solid #ddd;
     border-left: 0;

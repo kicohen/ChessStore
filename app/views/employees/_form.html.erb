@@ -1,0 +1,29 @@
+<%= simple_form_for @employee, :url => employee_path, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
+  </p>
+  <p>
+    <%= f.input :email, input_html: {placeholder: "Email"}, label: false %>
+  </p>
+  <p>
+    <%= f.input :phone, input_html: {placeholder: "Phone Number"}, label: false %>
+  </p>
+  <p>
+    <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
+  </p>
+  <p>
+   <%= f.input :category, collection: User::ROLES, input_html: {placeholder: "Role"}, :selected => "Select", label: false%>
+  </p>
+  <p><%= f.submit nil, :class => 'btn btn-success full-width' %></p>
+<% end %>

@@ -1,2 +1,12 @@
-<h1>Employees#show</h1>
-<p>Find me in app/views/employees/show.html.erb</p>
+<div class="row">
+  <div class="container col-md-12">
+  	<div class="jumbotron">
+    	<%= render :partial => "employee_details" %>
+  	</div>
+  </div>
+</div>
+
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+<%= render partial: "partials/object_options", locals: {model_name: "employee", object: @employee}  %>

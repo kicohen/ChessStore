@@ -9,15 +9,15 @@ class EmployeesController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @employee = User.new
   end
 
   def create
-    @user = User.new(user_params)
-    @user.role = "admin"
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to home_path, notice: "Thank you for signing up! You are now logged in."
+    @employee = User.new(user_params)
+    @employee.role = "admin"
+    if @employee.save
+      session[:user_id] = @employee.id
+      redirect_to home_path, notice: "Successfully created new user."
     else
       render action: 'new'
     end
@@ -27,6 +27,11 @@ class EmployeesController < ApplicationController
   end
 
   def update
+    if @employee.update(user_params)
+      redirect_to employee_path(@employee), notice: "Successfully updated #{@employee.name}."
+    else
+      render action: 'edit'
+    end
   end
 
   private
@@ -35,7 +40,7 @@ class EmployeesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :role, :phone)
   end
   
 
