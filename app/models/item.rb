@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
 
   # List of allowable categories
+  SELECT_OPTIONS = [["Category", "Select"],['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]
   CATEGORIES = [['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]
   
   # Relationships

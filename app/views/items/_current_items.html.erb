@@ -1,21 +1,20 @@
-<% unless items.nil? || items.empty? %>
-  <h5><%= item_type.capitalize %></h5>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th width="300">Name</th>
-        <th width="100">Price</th>
-        <th width="100">Inventory</th>
-      </tr>
-    </thead>
-    <tbody>
+<% unless items.nil? || items.empty? %> 
+  <div class="col-sm-3">
+  <div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item active"><%= item_type.capitalize %></li>
       <% items.each do |item| %>
-        <tr>
-          <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= number_to_currency item.current_price %></td>
-          <td><%= item.inventory_level %></td>
-        </tr>
+        <li class="list-group-item">
+          <%= link_to item.name, item_path(item) %>
+          <br>
+          <span class="badge badge-success"><%= number_to_currency item.current_price %></span>
+          &nbsp;
+          <span class="badge badge-primary"><%= item.inventory_level %></span>
+        </li>
       <% end %>
-    </tbody>
-  </table>
+  </ul>
+</div>
+<br>
+<br>
+</div>
 <% end %>

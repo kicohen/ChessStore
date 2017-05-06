@@ -23,7 +23,9 @@
 
 <!-- Side Heading -->
 <div id="main-heading">
+<%= link_to(home_path) do %>
   <h1 class="right">A&amp;M Chess Store</h1>
+<% end %>  
 </div>
 
 <%= render :partial => "partials/flash" %>
@@ -38,9 +40,9 @@
 
 <!-- Custom Right Click Menu -->
 <ul class='custom-menu'>
-  <li data-action="first">Add Item</li>
-  <li data-action="second">Edit Item</li>
-  <li data-action="third">Delete Item</li>
+  <li><%= link_to "Add an Item", new_item_path %></li>
+  <li><%= link_to "Item List", items_path %></li>
+  <li><%= link_to "Item List", items_path %></li>
 </ul>
 <!-- Javascript -->
 <!-- JQUERY -->

@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= simple_form_for @user, html: { class: 'form-horizontal', multipart: true } do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,20 +11,16 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
   </p>
   <p>
-    <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
+    <%= f.input :email, input_html: {placeholder: "Email"}, label: false %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.input :password, input_html: {placeholder: "Password"}, label: false %>
   </p>
   <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.input :password_confirmation, input_html: {placeholder: "Password Confirmation"}, label: false %>
   </p>
-  <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
+  <p><%= f.submit nil, :class => 'btn btn-success full-width' %></p>
 <% end %>

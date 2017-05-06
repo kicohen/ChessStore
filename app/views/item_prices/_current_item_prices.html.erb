@@ -6,7 +6,8 @@
     <thead>
       <tr>
         <th width="225">Item</th>
-        <th width="150">Price</th>
+        <th width="150">Wholesale Price</th>
+        <th width="150">Manufacturer Price</th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,7 @@
         <tr>
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= item.current_price.nil? ? 'N/A' : number_to_currency(item.current_price) %></td>
+          <td><%= item.current_manufacturer_price.nil? ? 'N/A' : number_to_currency(item.current_manufacturer_price) %></td>
         </tr>
       <% end %>
     </tbody>

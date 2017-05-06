@@ -1,10 +1,9 @@
 <% unless @inactive_items.empty? %>
-  <div class="panel clearfix">
-    <h3>Inactive Items</h3>
-    <ul>
+	<br>
+    <ul class="list-group">
+      <li class="list-group-item bg-danger text-white">Inactive Items</li>
       <% @inactive_items.each do |item| %>
-        <li><%= link_to item.name, item_path(item) %></li>
+        <li class="list-group-item"><%= link_to item.name, item_path(item) %></li>
       <% end %>
     </ul>
-  </div>
 <% end %>

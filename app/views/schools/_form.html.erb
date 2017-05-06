@@ -1,0 +1,16 @@
+<%= simple_form_for @school, html: {multipart: true } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Item</legend>
+
+    <%= f.input :name, input_html: {placeholder: "Name"}, label: false %>
+    <%= f.input :street_1, input_html: {placeholder: "Street 1"}, label: false %>
+    <%= f.input :street_2, input_html: {placeholder: "Street 2"}, label: false %>
+    <%= f.input :city, input_html: {placeholder: "City"}, label: false %>
+    State:
+    <%= f.input :state, collection: School::STATES_LIST, include_blank: true, label: false %>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-success' %>
+      <%= link_to 'Cancel', items_path, :class => 'btn btn-danger full-width' %>
+    </div>
+  </fieldset>
+<% end %>

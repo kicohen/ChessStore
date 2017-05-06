@@ -1,0 +1,17 @@
+<% unless @schools.nil? || @schools.empty? %> 
+  <div class="col-sm-4">
+  <div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item active">Schools</li>
+      <% @schools.each do |school| %>
+        <li class="list-group-item">
+          <%= link_to school.name, school_path(school) %>
+          <br>
+        </li>
+      <% end %>
+  </ul>
+</div>
+<br>
+<br>
+</div>
+<% end %>

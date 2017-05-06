@@ -10,7 +10,7 @@
   	</div>
   	<br>
   	<div class="container">
-  	  <div class="jumbotron">
+  	  <div class="jumbotron less-padding">
   	  	<!-- Placeholder for actual form -->
   		<form>
   			<input type="text" name="" placeholder="New Price">
@@ -20,8 +20,8 @@
   	</div>
   </div>
 </div>
-<div class="row">
-	<%= render :partial => "similar_items" unless @similar_items.empty?%>
+<%= render :partial => "similar_items" unless @similar_items.empty?%>
+	
 </div>
 
 <!-- Add buttons to list all, edit project or destroy object -->

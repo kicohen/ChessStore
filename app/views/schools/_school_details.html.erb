@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <h3><%= @school.name %></h3>
+  </div>
+</div>
+
+<p>
+<b>Grades: </b>
+<% if @school.min_grade == 0 %>
+  K
+<% else %>
+  <%= @school.min_grade %>
+<% end %>
+ through 
+  <%= @school.max_grade %>
+</p>
+
+<b>Address:</b><br>
+<%= render partial: "partials/address_info", locals: {school: @school} %>

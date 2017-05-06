@@ -37,7 +37,7 @@ class Ability
     elsif user.role? :manager
         can :read, :all
     else
-        can :read, :all
+        can :manage, :all
     end
 
   end
