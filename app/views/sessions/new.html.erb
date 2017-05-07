@@ -13,7 +13,7 @@ Don't have an account, <%= link_to "Create Account", users_new_path %>
 
       <div>
         <div>
-          <%= text_field_tag :password, params[:password], placeholder: "Password", class: "password-field-hack"  %>
+          <%= password_field_tag :password %>
         </div>
       </div>
       

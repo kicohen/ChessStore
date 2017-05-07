@@ -30,14 +30,36 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     user ||= User.new
+
+    alias_action :create, :read, :update, :edit, :new, to: :cru
+    alias_action :create, :read, :update, :edit, :new, :destroy, to: :crud
+    alias_action :create, :new, :read, to: :cr
+    alias_action :read, :update, :edit, to: :ru
+
     if user.role? :admin
-        can :manage, :all
-    elsif user.role? :shipper
         can :manage, :all
     elsif user.role? :manager
         can :read, :all
+        can :cru, User, role: [:shipper, :manager]
+        can :crud, Item
+        can :cr, ItemPrice
+        can :cr, Purchase
+    elsif user.role? :shipper
+        can :ru, User, id: user.id
+        can :read, Item
+        can :read, Order
+        can :ru, OrderItem
+        can :read, School
+    elsif user.role? :customer
+        can :ru, User, id: user.id
+        can :cru, Order, user_id: user.id
+        can :read, Item
+        can :read, ItemPrice, end_date: nil, category: 'wholesale'
+        can :cr, School
     else
-        can :manage, :all
+        can :read, Item
+        can :read, ItemPrice, end_date: nil, category: 'wholesale'
+        can :create, User
     end
 
   end

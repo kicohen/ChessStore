@@ -11,6 +11,12 @@
     </div>
   <% end %>
   <p>
+    <%= f.input :first_name, input_html: {placeholder: "First Name"}, label: false %>
+  </p>
+  <p>
+    <%= f.input :last_name, input_html: {placeholder: "Last Name"}, label: false %>
+  </p>
+  <p>
     <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
   </p>
   <p>
@@ -20,10 +26,7 @@
     <%= f.input :phone, input_html: {placeholder: "Phone Number"}, label: false %>
   </p>
   <p>
-    <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
-  </p>
-  <p>
-   <%= f.input :category, collection: User::ROLES, input_html: {placeholder: "Role"}, :selected => "Select", label: false%>
+   <%= f.input :role, collection: User::ROLES, input_html: {placeholder: "Role"}, :selected => "Select", label: false%>
   </p>
   <p><%= f.submit nil, :class => 'btn btn-success full-width' %></p>
 <% end %>
