@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user.nil?
+      redirect_to users_new_path
+    end
     @user = current_user
   end
 
@@ -28,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   private
-  # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end

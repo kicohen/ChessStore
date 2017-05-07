@@ -1,4 +1,7 @@
 <h3>Log In</h3>
+Don't have an account, <%= link_to "Create Account", users_new_path %>
+<br>
+<br>
 <div>
   <div>
     <%= form_tag sessions_path do %>
@@ -14,7 +17,7 @@
         </div>
       </div>
       
-      <div><%= submit_tag "Log In" %></div>
+      <div><%= submit_tag "Log In", class: "btn btn-success full-width" %></div>
     <% end %>
   </div>
 </div>

@@ -5,7 +5,7 @@
 	<h1>Cart is Empty</h1>
 <% else %>
 	<% @cart.each do |item| %>
-	 <li><%= item.item.name %>&nbsp;
+	 <li class="list-group-item"><%= item.item.name %>&nbsp;
 	 <span class="badge badge-primary"><%= item.quantity %></span>
 	 <span class="badge badge-success"><%= number_to_currency(item.subtotal) %></span>
 	 <span class="badge badge-danger"><%= link_to "X", remove_from_cart_path(item.item.id) %></span>

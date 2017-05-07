@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @boards = Item.active.for_category('boards').alphabetical
     @pieces = Item.active.for_category('pieces').alphabetical
     @clocks = Item.active.for_category('clocks').alphabetical
-    @supplies = Item.active.for_category('supplies').alphabetical    
+    @supplies = Item.active.for_category('supplies').alphabetical 
     # get a list of any inactive items for sidebar
     @inactive_items = Item.inactive.alphabetical.to_a
   end

@@ -15,6 +15,7 @@ class StoresController < ApplicationController
   end
 
   def checkout
+    @cart = get_list_of_items_in_cart
   	@order = Order.new
   end
 
@@ -35,5 +36,20 @@ class StoresController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.user = session[:user]
+    @order.date = Date.today
+    @order.grand_total = calculate_cart_items_cost
+    if @order.save
+      save_each_item_in_cart(@order)
+      clear_cart
+      redirect_to home_path, notice: "Checkout complete."
+    else
+      render action: 'checkout'
+    end
+  end
+
+  def order_params
+    params.require(:order).permit(:school_id, :grand_total, :credit_card_number, :expiration_year, :expiration_month)
   end
 end
