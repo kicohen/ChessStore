@@ -2,7 +2,7 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Order</legend>
 
-    <%= f.input :school%>
+    <%= f.input :school, collection: School.active.to_a%>
     <%= f.input :credit_card_number%>
     <%= f.input :expiration_year %>
     <%= f.input :expiration_month %>

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'user/new'
-  get 'user/create'
-  get 'user/edit'
-  get 'user/update'
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  get 'stores/create'
+
+  # Semi-static page routes
+  get 'home' => 'home#home', as: :home
+  get 'about' => 'home#about', as: :about
+  get 'contact' => 'home#contact', as: :contact
+  get 'privacy' => 'home#privacy', as: :privacy
 
   # Routes for main resources
   resources :items
@@ -17,11 +17,20 @@ Rails.application.routes.draw do
   resources :orders
   resources :employees
 
-  # Semi-static page routes
-  get 'home' => 'home#home', as: :home
-  get 'about' => 'home#about', as: :about
-  get 'contact' => 'home#contact', as: :contact
-  get 'privacy' => 'home#privacy', as: :privacy
+  get 'stores/index'
+  get 'stores/details'
+  get 'stores/cart'
+  get 'stores/checkout'
+  get 'stores/add_to_cart/:id', to: 'stores#add_to_cart', :as => 'add_to_cart'
+  get 'stores/remove_from_cart/:id', to: 'stores#remove_from_cart', :as => 'remove_from_cart'
+
+  get 'user/new'
+  get 'user/create'
+  get 'user/edit'
+  get 'user/update'
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
   
   resources :users
   resources :sessions

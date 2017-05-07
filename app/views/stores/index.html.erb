@@ -1,0 +1,6 @@
+<%= render partial: "partials/customer_nav" %>
+<br>
+<h1>Store</h1>
+<% @items.each do |item| %>
+<%= item.name %> <%= link_to "Add to Cart", add_to_cart_path(item) %><br>
+<% end %>
