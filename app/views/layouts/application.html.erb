@@ -20,7 +20,21 @@
 </head>
 
 <body>
-
+<script type="text/javascript">
+<% if logged_in? %>
+  <% if current_user.role? :admin %>
+    console.log("Admin");
+  <% elsif current_user.role? :customer %>
+    console.log("Customer");
+  <% elsif current_user.role? :manager %>
+    console.log("Manager");
+  <% elsif current_user.role? :shipper %>
+    console.log("Shipper")
+  <% end %>
+<% else %> 
+  console.log("Guest")
+<% end %>
+</script>
 <!-- Side Heading -->
 <div id="main-heading">
 <%= link_to(home_path) do %>
@@ -39,13 +53,7 @@
 
 <%= render :partial => "partials/admin_navigation" %>
 
-<!-- Custom Right Click Menu -->
-<ul class='custom-menu'>
-  <li><%= link_to "Item List", items_path %></li>
-  <li><%= link_to "Purchases", purchases_path %></li>
-  <li><%= link_to "Order List", orders_path %></li>
-  <li><%= link_to "Employee List", employees_path %></li>
-</ul>
+<%= render :partial => "partials/content_menu" %>
 <!-- Javascript -->
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>

@@ -40,25 +40,22 @@ class Ability
         can :manage, :all
     elsif user.role? :manager
         can :read, :all
-        can :cru, User, role: [:shipper, :manager]
+        can :cru, User, id: user.id
+        can :cru, Employee
         can :crud, Item
         can :cr, ItemPrice
         can :cr, Purchase
     elsif user.role? :shipper
         can :ru, User, id: user.id
-        can :read, Item
         can :read, Order
+        can :show, Item
         can :ru, OrderItem
         can :read, School
     elsif user.role? :customer
         can :ru, User, id: user.id
         can :cru, Order, user_id: user.id
-        can :read, Item
-        can :read, ItemPrice, end_date: nil, category: 'wholesale'
         can :cr, School
     else
-        can :read, Item
-        can :read, ItemPrice, end_date: nil, category: 'wholesale'
         can :create, User
     end
 

@@ -3,7 +3,11 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update]
 
   def index
-    @orders = Order.chronological
+    if current_user.role? :customer
+      @orders = Order.chronological.for_user(current_user.id)
+    else
+      @orders = Order.chronological
+    end
   end
 
   def new

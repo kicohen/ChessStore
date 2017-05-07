@@ -20,6 +20,7 @@ class Order < ActiveRecord::Base
   scope :chronological, -> { order(date: :desc) }
   scope :paid,          -> { where.not(payment_receipt: nil) }
   scope :for_school,    ->(school_id) { where(school_id: school_id) }
+  scope :for_user,    ->(user_id) { where(user_id: user_id) }
 
   # Class methods
   def self.not_shipped

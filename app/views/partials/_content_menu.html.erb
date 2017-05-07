@@ -1,0 +1,18 @@
+<ul class='custom-menu'>
+<% if logged_in? %>
+  <% if current_user.role? :admin %>
+  	<%= render partial: "partials/admin_content_menu" %>
+  <% elsif current_user.role? :customer %>
+    <%= render partial: "partials/customer_content_menu" %>
+  <% elsif current_user.role? :manager %>
+    <%= render partial: "partials/admin_content_menu" %>
+  <% elsif current_user.role? :shipper %>
+    <%= render partial: "partials/shipper_content_menu" %>
+  <% end %>
+  <li><%= link_to "My Account", users_edit_path %></li>
+  <li><%= link_to "Logout", logout_path %></li>
+<% else %> 
+  <%= render partial: "partials/customer_content_menu" %>
+  <li><%= link_to "Create Account", users_new_path %></li>
+<% end %>
+</ul>

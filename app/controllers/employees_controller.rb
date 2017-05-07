@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  before_action :redirect_to_root, :if => :authorize_resource?
   before_action :set_employee, only: [:show, :edit, :update]
 
   def index
@@ -42,6 +43,23 @@ class EmployeesController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :role, :phone)
   end
-  
 
+  def authorize_resource?
+    if logged_in?
+      if current_user.role? :admin
+        false
+      elsif current_user.role? :manager
+        false
+      else
+        true
+      end
+    else
+      true
+    end
+  end
+
+  def redirect_to_root
+    redirect_to root_path
+  end
+  
 end
