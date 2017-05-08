@@ -15,6 +15,7 @@
       <%= f.input :inventory_level, input_html: {placeholder: "Inventory Level", type: 'text', onfocus: "this.type='number';", onfocusout: "this.type='text';"}, label: false  %>
     <% end %>
     <%= f.input :reorder_level, input_html: {placeholder: "Reorder Level", type: 'text', onfocus: "this.type='number';", onfocusout: "this.type='text';"}, label: false  %>
+    <%= f.file_field :picture %>
     <%= f.input :active%>
 
     <div class="form-actions">

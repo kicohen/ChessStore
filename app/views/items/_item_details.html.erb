@@ -4,7 +4,10 @@
     <h3><%= @item.name %></h3>
   </div>
   <div>
-    <%= image_tag 'img_not_available.png' %>
+
+     <% unless @item.picture.nil? %>
+        <p><%= image_tag @item.picture_url, class: "item-picture" %></p>
+      <% end %>
   </div>
 </div>
 

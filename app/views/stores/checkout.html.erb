@@ -7,6 +7,7 @@
     <legend><%= controller.action_name.capitalize %> Order</legend>
 
     <%= f.input :school_id, collection: School.active.to_a%>
+    <%= link_to "Create School", new_school_path %>
     <%= f.input :credit_card_number%>
     <%= f.input :expiration_year, input_html: {type: 'number', value: Date.today.year } %>
     <%= f.input :expiration_month %>

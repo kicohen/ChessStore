@@ -402,3 +402,7 @@ input[type='tel'],input[type='text'],input[type='number'],input[type="password"]
 .hide-table{
   display: none;
 }
+
+.item-picture{
+  width: 50%;
+}
