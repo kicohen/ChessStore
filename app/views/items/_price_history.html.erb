@@ -1,7 +1,11 @@
+<div id="price_history">
+<div class="row">
 <div class="container col-lg-6">
   <%= render :partial => "items/wholesale_price_history" unless @price_history.empty?%>
 <br>
 </div>
 <div class="container col-lg-6">
   <%= render :partial => "items/manufacturer_price_history" unless @manufacturer_price_history.empty?%>
+</div>
+</div>
 </div>
