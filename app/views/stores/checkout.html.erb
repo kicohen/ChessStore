@@ -2,7 +2,22 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-7">
-<%= render partial: "orders/form" %>
+<%= simple_form_for @order, :url => stores_create_path, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Order</legend>
+
+    <%= f.input :school_id, collection: School.active.to_a%>
+    <%= f.input :credit_card_number%>
+    <%= f.input :expiration_year, input_html: {type: 'number', value: Date.today.year } %>
+    <%= f.input :expiration_month %>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-success full-width' %>
+      <br>
+      <br>
+      <%= link_to 'Cancel', orders_path, :class => 'btn btn-danger full-width' %>
+    </div>
+  </fieldset>
+<% end %>
 </div>
 <div class="col-sm-5">
 <%= render partial: "cart_items" %>	

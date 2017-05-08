@@ -4,7 +4,11 @@
 
     <%= f.input :name, input_html: {placeholder: "Name"}, label:false %>
     <%= f.input :description, input_html: { :rows => 4, placeholder: "Description" }, label: false %>
+    <% if controller.action_name == "edit" %>
+    <%= f.input :category, collection: Item::SELECT_OPTIONS, input_html: {placeholder: "name"}, label: false%>
+    <% else %>
     <%= f.input :category, collection: Item::SELECT_OPTIONS, input_html: {placeholder: "name"}, :selected => "Select", label: false%>
+    <% end %>
     <%= f.input :color, input_html: {placeholder: "Color"}, label: false %>
     <%= f.input :weight, input_html: {placeholder: "Weight", type: 'text', onfocus: "this.type='number';", onfocusout: "this.type='text';"}, label: false %>
     <% if controller.action_name == "new" %>

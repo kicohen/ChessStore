@@ -8,14 +8,8 @@
   
   </div>
   <div class="container col-md-5">
-    <div class="row">
-    <div class="container col-lg-6">
-    	<%= render :partial => "price_history" unless @price_history.empty?%>
-  	<br>
-    </div>
-    <div class="container col-lg-6">
-      <%= render :partial => "price_history" unless @price_history.empty?%>
-    </div>
+    <div class="row" id="price_history">
+    <%= render :partial => "price_history" %>
     </div>
   	<br>
   	<div class="container">

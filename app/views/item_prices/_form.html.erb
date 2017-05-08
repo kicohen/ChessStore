@@ -1,15 +1,12 @@
-<%= simple_form_for @item_price, html: { class: 'form-horizontal', multipart: true } do |f| %>
+<%= simple_form_for @item_price, remote: true, html: { class: 'form-horizontal', multipart: true } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> Price</legend>
-
-    <%= f.input :item_id, collection: Item.active.to_a %>
+    <legend>Change Item Price</legend>
+    <%= f.input :item_id, :as => :hidden, input_html: {value: @item.id} %>
     <%= f.input :category, collection: ItemPrice::CATEGORIES,  input_html: {placeholder: "name"}, :selected => "Select", label: false%>
     <%= f.input :price, label: false, placeholder: "Price" %>
 
-
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-success full-width' %><br><br>
-      <%= link_to 'Cancel', item_prices_path, :class => 'btn btn-danger full-width' %>
     </div>
   </fieldset>
 <% end %>

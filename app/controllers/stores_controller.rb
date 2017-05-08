@@ -37,7 +37,7 @@ class StoresController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.user = session[:user]
+    @order.user = current_user
     @order.date = Date.today
     @order.grand_total = calculate_cart_items_cost
     if @order.save
@@ -45,6 +45,7 @@ class StoresController < ApplicationController
       clear_cart
       redirect_to home_path, notice: "Checkout complete."
     else
+      @cart = get_list_of_items_in_cart
       render action: 'checkout'
     end
   end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
   get 'about' => 'home#about', as: :about
@@ -12,17 +13,19 @@ Rails.application.routes.draw do
   resources :schools
   resources :orders
   resources :employees
-
-  get 'stores/index'
-  get 'stores/cart'
+  
+  get 'stores/index' 
+  get 'stores/cart'  
   get 'stores/checkout'
-  get 'stores/create'
+  post 'stores/create'
   get 'stores/details/:id', to: 'stores#details', :as => 'details'
   get 'stores/add_to_cart/:id', to: 'stores#add_to_cart', :as => 'add_to_cart'
   get 'stores/remove_from_cart/:id', to: 'stores#remove_from_cart', :as => 'remove_from_cart'
+                     
+  get 'orders/mark_item_as_shipped/:order_item_id', to: 'orders#mark_item_as_shipped', :as => 'mark_item_as_shipped'
 
   get 'user/edit' => 'users#edit', :as => :edit_current_user
-  get 'users/new'
+  get 'users/new'   
   get 'users/create'
   get 'users/edit'
   get 'users/update'

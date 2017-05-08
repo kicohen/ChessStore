@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   load_and_authorize_resource
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_order, only: [:show, :edit, :update]
 
   def index
     if current_user.role? :customer
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    
+    @order.user_id = current_user.id
     if @order.save
       redirect_to order_path(@order), notice: "Successfully created new Order."
     else
@@ -38,6 +38,20 @@ class OrdersController < ApplicationController
   def show
     @school = @order.school
     @order_items = @order.order_items
+  end
+
+  def mark_item_as_shipped
+    @order_item = OrderItem.find(params[:order_item_id])
+    @order_item.shipped
+    respond_to do |format|
+      if @order_item.nil?
+        format.html { redirect_to home_path, notice: "Failed." }
+        format.js
+      else
+        format.html { redirect_to home_path, notice: "Successfully shipped order item" }
+        format.js 
+      end
+    end
   end
 
   private

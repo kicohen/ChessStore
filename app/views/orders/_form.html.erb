@@ -2,9 +2,9 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Order</legend>
 
-    <%= f.input :school, collection: School.active.to_a%>
+    <%= f.input :school_id, collection: School.active.to_a%>
     <%= f.input :credit_card_number%>
-    <%= f.input :expiration_year %>
+    <%= f.input :expiration_year, input_html: {type: 'number', value: Date.today.year } %>
     <%= f.input :expiration_month %>
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-success full-width' %>

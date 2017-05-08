@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+
 document.addEventListener("click", toggleMenu);
 var menu = document.getElementById('menu');
 var search = document.getElementById('search');

@@ -1,0 +1,12 @@
+<% unless @manufacturer_price_history.empty? %>
+  <div class="panel clearfix">
+    <ul class="list-group">
+      <li class="list-group-item active">Manufacturer Price History</li>
+      <% @manufacturer_price_history.each do |change| %>
+      <li class="list-group-item">
+        <%= number_to_currency change.price %>&nbsp;&nbsp;&nbsp;(<%= change.start_date.strftime('%m/%d/%y') %>)<br />
+      </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
