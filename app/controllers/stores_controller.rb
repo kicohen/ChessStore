@@ -15,6 +15,9 @@ class StoresController < ApplicationController
   end
 
   def checkout
+    if not logged_in?
+      redirect_to login_path, notice: "You must log in or create an account to checkout"
+    end
     @cart = get_list_of_items_in_cart
   	@order = Order.new
   end
