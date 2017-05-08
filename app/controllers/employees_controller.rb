@@ -17,7 +17,6 @@ class EmployeesController < ApplicationController
     @employee = User.new(user_params)
     @employee.role = "admin"
     if @employee.save
-      session[:user_id] = @employee.id
       redirect_to home_path, notice: "Successfully created new user."
     else
       render action: 'new'

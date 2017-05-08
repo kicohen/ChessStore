@@ -1,0 +1,23 @@
+<% if @users.empty? %>
+  <h4>No users at this time.</h4>
+<% else %>
+  <table class="table table-striped">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th width="225">Name</th>
+        <th width="150">Email</th>
+        <th width="150">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name , user_path(user) %></td>
+          <td><%= user.email.nil? ? 'N/A' : user.email %></td>
+          <td><%= user.phone.nil? ? 'N/A' : number_to_phone(user.phone) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<p>&nbsp;</p>

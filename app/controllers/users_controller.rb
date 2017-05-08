@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.role = "admin"
+    @user.role = :customer
     if @user.save
       session[:user_id] = @user.id
       redirect_to home_path, notice: "Thank you for signing up! You are now logged in."
@@ -29,6 +29,14 @@ class UsersController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+  def index
+    @users = User.active.customers.alphabetical
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private

@@ -31,12 +31,17 @@
             <td colspan="2"><%= link_to item.item.name, item_path(item.item) %></td>
             <td><%= item.quantity %></td>
             <% if item.shipped_on.nil? %>
-            <td><div id="<%= item.id %>">
-            <%= link_to(mark_item_as_shipped_path(order_item_id: item.id), id: item.id, remote: true) do %>
-              Mark as Shipped
-            <% end %>
-            </div>
-            </td>
+              <% if current_user.role? :manager %>
+                <td>Not Shipped</td>
+              <% else %>
+                <td>
+                  <div id="<%= item.id %>">
+                    <%= link_to(mark_item_as_shipped_path(order_item_id: item.id), id: item.id, remote: true) do %>
+                      Mark as Shipped
+                    <% end %>
+                  </div>
+                </td>
+              <% end %>
             <% else %>
             <td><%= item.shipped_on %></td>
             <% end %>

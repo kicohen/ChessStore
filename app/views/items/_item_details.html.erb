@@ -21,7 +21,9 @@
 
 <p>
   <b>Inventory Level</b>: <%= @item.inventory_level.nil? ? 'N/A' : @item.inventory_level %><br>
-  <%= link_to "Add Purchase", new_purchase_path(item_id: @item.id), remote: true, id: "new_purchase_link" %>
+  <% if not current_user.role? :shipper %> 
+    <%= link_to "Add Purchase", new_purchase_path(item_id: @item.id), remote: true, id: "new_purchase_link" %>
+  <% end %>
 </p>
 
 <p>
