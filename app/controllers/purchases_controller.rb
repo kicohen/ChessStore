@@ -6,16 +6,24 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = Purchase.new
+    respond_to do |format|
+      format.html
+      @item = Item.find(params[:item_id])
+      format.js
+    end
   end
 
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.date = Date.current
-    
-    if @purchase.save
-      redirect_to purchases_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @purchase.save
+        format.html {redirect_to purchases_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."}
+        @item = @purchase.item
+        format.js
+      else
+        render action: 'new'
+      end
     end
   end
 

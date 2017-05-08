@@ -1,6 +1,6 @@
 <%= simple_form_for @item_price, remote: true, html: { class: 'form-horizontal', multipart: true } do |f| %>
   <fieldset>
-    <%= f.input :item_id, collection: Item.active.to_a %>
+    <%= f.input :item_id, :as => :hidden, input_html: {value: @item.id} %>
     <%= f.input :category, collection: ItemPrice::CATEGORIES,  input_html: {placeholder: "name"}, :selected => "Select", label: false%>
     <%= f.input :price, label: false, placeholder: "Price"%>
 
