@@ -1,0 +1,15 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+<a href="#"><%= link_to( image_tag("logo.png", :id=>"sidebar-logo"), home_path) %></a>
+<ul class="sidebar-nav">
+  <%= render partial: "partials/admin_sidebar" %>
+</ul>
+</div>
+
+<div id="hs_button" class="hide_side_bar">
+<a href="#menu-toggle" id="menu-toggle">
+<button type="button" class="btn btn-default btn-md bg-custom" >
+    <span class="fa fa-angle-left" aria-hidden="true" id="toggle-span"></span>
+</button>
+</a>
+</div>

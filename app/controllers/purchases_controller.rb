@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   layout "admin"
+  
   load_and_authorize_resource
   def index
     @purchases = Purchase.chronological.to_a

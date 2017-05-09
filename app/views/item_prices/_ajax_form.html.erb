@@ -1,9 +1,17 @@
 <%= simple_form_for @item_price, remote: true, html: { class: 'form-horizontal', multipart: true } do |f| %>
   <fieldset>
     <%= f.input :item_id, :as => :hidden, input_html: {value: @item.id} %>
-    <%= f.input :category, collection: ItemPrice::CATEGORIES,  input_html: {placeholder: "name"}, :selected => "Select", label: false%>
-    <%= f.input :price, label: false, placeholder: "Price"%>
-
+    <br>
+    <label class="sr-only" for="inlineFormInputGroup">Category</label>
+    <div class="form-group">
+    <%= f.input :category, collection: ItemPrice::CATEGORIES,  input_html: {placeholder: "name", class: "form-control"}, :selected => "Select", label: false, wrapper:false%>    
+    </div>
+    <label class="sr-only" for="inlineFormInputGroup">Price</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0 full-width">
+        <div class="input-group-addon">$</div>
+        <%= f.input :price, label: false, input_html: {class: "form-control full-width", placeholder: "Price"}, wrapper: false %>
+      </div>
+      <br>
     <div class="form-actions">
       <%= f.submit "Change Price", :class => 'btn btn-success full-width' %><br><br>
     </div>

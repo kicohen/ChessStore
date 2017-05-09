@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  layout "admin"
+  
   def new
     @user = User.new
   end

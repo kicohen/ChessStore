@@ -10,29 +10,51 @@
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.input :first_name, input_html: {placeholder: "First Name"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :last_name, input_html: {placeholder: "Last Name"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :email, input_html: {placeholder: "Email"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :phone, input_html: {placeholder: "Phone Number"}, label: false %>
-  </p>
-   <p>
-    <%= f.input :password, input_html: {placeholder: "Password"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :password_confirmation, input_html: {placeholder: "Password Confirmation"}, label: false %>
-  </p>
-  <p>
-   <%= f.input :role, collection: User::ROLES, input_html: {placeholder: "Role"}, label: false%>
-  </p>
+<div class="form-group row">
+    <label class="col-2 col-form-label">First Name</label>
+    <div class="col-10">
+    <%= f.input :first_name, wrapper: false, label: false, input_html: {class: "form-control" }%>
+  </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Last Name</label>
+    <div class="col-10">
+    <%= f.input :last_name, wrapper: false, label: false, input_html: {class: "form-control" }%>
+  </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Username</label>
+    <div class="col-10">
+    <%= f.input :username, wrapper: false, label: false, input_html: {class: "form-control" }%>
+  </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Email Address</label>
+    <div class="col-10">
+    <%= f.input :email, wrapper: false, label: false, input_html: {class: "form-control" }%>
+  </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Phone Number</label>
+    <div class="col-10">
+    <%= f.input :phone, wrapper: false, label: false, input_html: {class: "form-control" }%>
+  </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Role</label>
+    <div class="col-10">
+   <%= f.input :role, collection: User::ROLES, wrapper: false, label: false, input_html: {class: "form-control" }%>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-10">
+    <%= f.input :password, input_html: {class: "form-control"}, label: false %>
+  </div></div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password Confirmation</label>
+    <div class="col-10">
+    <%= f.input :password_confirmation, input_html: {class: "form-control"}, label: false %>
+  </div></div>
   <p><%= f.submit nil, :class => 'btn btn-success full-width' %></p>
   <% end %>

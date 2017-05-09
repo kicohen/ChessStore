@@ -1,28 +1,76 @@
 <%= simple_form_for @item, html: { class: 'form-horizontal', multipart: true } do |f| %>
-  <fieldset>
-    <legend><%= controller.action_name.capitalize %> Item</legend>
-
-    <%= f.input :name, input_html: {placeholder: "Name"}, label:false %>
-    <%= f.input :description, input_html: { :rows => 4, placeholder: "Description" }, label: false %>
-    <% if controller.action_name == "edit" %>
-    <%= f.input :category, collection: Item::SELECT_OPTIONS, input_html: {placeholder: "name"}, label: false%>
-    <% else %>
-    <%= f.input :category, collection: Item::SELECT_OPTIONS, input_html: {placeholder: "name"}, :selected => "Select", label: false%>
-    <% end %>
-    <%= f.input :color, input_html: {placeholder: "Color"}, label: false %>
-    <%= f.input :weight, input_html: {placeholder: "Weight", type: 'text', onfocus: "this.type='number';", onfocusout: "this.type='text';"}, label: false %>
-    <% if controller.action_name == "new" %>
-      <%= f.input :inventory_level, input_html: {placeholder: "Inventory Level", type: 'text', onfocus: "this.type='number';", onfocusout: "this.type='text';"}, label: false  %>
-    <% end %>
-    <%= f.input :reorder_level, input_html: {placeholder: "Reorder Level", type: 'text', onfocus: "this.type='number';", onfocusout: "this.type='text';"}, label: false  %>
-    <%= f.file_field :picture %>
-    <%= f.input :active%>
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-success full-width' %>
-      <br>
-      <br>
-      <%= link_to 'Cancel', items_path, :class => 'btn btn-danger full-width' %>
+<fieldset>
+  <legend><%= controller.action_name.capitalize %> Item</legend>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Name</label>
+    <div class="col-10">
+      <%= f.input :name, wrapper: false, label: false, input_html: {class: "form-control" }%>
     </div>
-  </fieldset>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Description</label>
+    <div class="col-10">
+      <%= f.input :description, input_html: { :rows => 4}, wrapper: false, label: false, input_html: {class: "form-control" } %>
+    </div>
+  <% if controller.action_name == "edit" %>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Category</label>
+    <div class="col-10">
+      <%= f.input :category, collection: Item::SELECT_OPTIONS, wrapper: false, label: false, input_html: {class: "form-control" } %>
+    </div>
+  <% else %>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Category</label>
+    <div class="col-10">
+      <%= f.input :category, collection: Item::SELECT_OPTIONS, :selected => "Select", wrapper: false, label: false, input_html: {class: "form-control" } %>
+    </div>
+  <% end %>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Color</label>
+    <div class="col-10">
+      <%= f.input :color, wrapper: false, label: false, input_html: {class: "form-control" }%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Weight</label>
+    <div class="col-10">
+      <%= f.input :weight, wrapper: false, label: false, input_html: {class: "form-control" } %>
+    </div>
+  </div>
+  <% if controller.action_name == "new" %>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Inventory Level</label>
+      <div class="col-10">
+        <%= f.input :inventory_level, wrapper: false, label: false, input_html: {class: "form-control" }%>
+      </div>
+    </div>
+  <% end %>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Reorder Level</label>
+    <div class="col-10">
+      <%= f.input :reorder_level, wrapper: false, label: false, input_html: {class: "form-control" } %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Picture</label>
+    <div class="col-10">
+    <%= f.file_field :picture, wrapper: false, label: false, input_html: {class: "form-control" } %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Active</label>
+    <div class="col-10">
+      &nbsp;&nbsp;&nbsp;&nbsp;<%= f.input :active, wrapper: false, label: false, input_html: {class: "form-check-input" }%>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-success full-width' %>
+    <br>
+    <br>
+    <%= link_to 'Cancel', items_path, :class => 'btn btn-danger full-width' %>
+  </div>
+</fieldset>
 <% end %>

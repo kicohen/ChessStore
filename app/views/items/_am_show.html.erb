@@ -1,25 +1,23 @@
 <div class="row">
   <div class="container col-md-7">
-  	<div class="">
+  	<div class="jumbotron">
     	<%= render :partial => "item_details" %>
-  	</div>
-    
-<%= render :partial => "similar_items" unless @similar_items.empty?%>
-  
+  	</div>   
+    <%= render :partial => "similar_items" unless @similar_items.empty?%>
   </div>
   <div class="container col-md-5">
     <%= render :partial => "price_history" %>
   	<br>
   	<div class="container">
-  	  <div class=" less-padding">
-  	  	<!-- Placeholder for actual form -->
-  		<%= render :partial => "item_prices/ajax_form" %>
+  	  <div class="jumbotron less-padding">
+    		<%= render :partial => "item_prices/ajax_form" %>
   	  </div>
   	</div>
   </div>
 </div>
-
 </div>
 
-<!-- Add buttons to list all, edit project or destroy object -->
-<%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
+<% content_for :pg_specific_links do %>
+ <li class="nav-item"><%= link_to "Edit Item", edit_item_path(@item), class: "nav-link" %></li>
+ <li class="nav-item"><%= link_to "Delete Item", item_path(@item), class: "nav-link", method: :delete%></li>
+<% end %>

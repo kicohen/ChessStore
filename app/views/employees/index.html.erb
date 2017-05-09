@@ -2,3 +2,7 @@
                                                          primary: "list_users", 
                                                          secondary: nil,
                                                          sidebar: nil} %>
+
+<% content_for :pg_specific_links do %>
+   <li class="nav-item"><%= link_to "Add Employee", new_employee_path, class: "nav-link" %>                                                         
+ <% end %>

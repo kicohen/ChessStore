@@ -2,3 +2,8 @@
                                                          primary: "active_items", 
                                                          secondary: nil,
                                                          sidebar: "inactive_items"} %>
+
+
+<% content_for :pg_specific_links do %>
+ <li class="nav-item"><%= link_to "New Item", new_item_path, class: "nav-link" %></li>
+<% end %>
