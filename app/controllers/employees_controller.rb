@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+  layout "admin"
+  
   before_action :redirect_to_root, :if => :authorize_resource?
   before_action :set_employee, only: [:show, :edit, :update]
 

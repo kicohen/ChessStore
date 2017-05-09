@@ -3,10 +3,12 @@
     <div class="container">
       <div class="upper">
         <h3>Your Cart</h3>
-        <%= render partial: "stores/cart_items" %>
         <hr>
+        <%= render partial: "stores/cart_items" %>
       </div>
       <div class="lower">
+        <% if @cart.nil? or @cart.empty? %>
+        <% else %> 
         <table class="full-width">
           <tr>
             <td>Total</td>
@@ -14,7 +16,8 @@
           </tr>
         </table>
         <br>
-        <a class="btn btn-primary full-width white-text">Checkout Now</a>
+          <%= link_to "Checkout", stores_checkout_path, class: "btn btn-primary full-width white-text" %>
+        <% end %>
       </div>
     </div>
   </div>

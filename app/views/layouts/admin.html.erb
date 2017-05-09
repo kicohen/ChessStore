@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Data -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+  <meta name="description" content="Alex and Mark Chess Store Information Systems Application Design and Development">
+  <meta name="author" content="Kenny Cohen">
+  <title>A&amp;M Chess Store</title>
+  <!-- Stylesheets -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"> <!-- tables -->
+  <%= stylesheet_link_tag 'admin' %>
+  <!-- Font -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <%= render 'partials/favicon' %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        <a href="#"><%= link_to( image_tag("logo.png", :id=>"sidebar-logo"), home_path) %></a>
+            <ul class="sidebar-nav">
+            	<%= render partial: "partials/admin_sidebar" %>
+            </ul>
+        </div>
+
+        <div id="hs_button" class="hide_side_bar">
+            <a href="#menu-toggle" id="menu-toggle">
+            <button type="button" class="btn btn-default btn-md bg-custom" >
+                <span class="fa fa-angle-left" aria-hidden="true" id="toggle-span"></span>
+            </button>
+            </a>
+        </div>
+
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-toggleable-md navbar-inverse bg-custom mb-4" id="main-nav">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">A&amp;M</a>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user" aria-hidden="true"></span></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    
+                    <a href="404.html" class="dropdown-item">Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="404.html">Logout</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Page Specific Navbar -->
+        <nav class="navbar navbar-toggleable-md navbar-inverse mb-4" id="page-specific-nav">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#pageSpecificNavbar" aria-controls="pageSpecificNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <%= yield :pgSpecificNavLink %>
+         <div class="collapse navbar-collapse" id="pageSpecificNavbar">
+            <ul class="navbar-nav mr-auto"></ul>
+            <div class="nav navbar-nav navbar-right btn-group" role="group" aria-label="Page Specific Nav">
+            <%= yield :pgSpecificButtons %>
+            </div>
+          </div>
+        </nav>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-info bg_blue_light-no_hover" %>
+        <% end %>
+        
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <%= yield %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> <!-- datatables dependant -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> <!-- datatables -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script> 
+    // Create the table 
+    var oTable = $(document).ready(function(){
+        var oTable = $('table').DataTable();
+        $(document).ready(function(){ 
+            $('.dataTables_filter').addClass("hide");
+            $('.dataTables_length').addClass("hide");
+        });
+
+        $('.search').on("click", function(){
+            $('.dataTables_filter').toggleClass("hide");
+        });
+        $('.entries').on("click", function(){
+            $('.dataTables_length').toggleClass("hide");
+        });
+        return oTable;
+    });
+    // Side bar toggle
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#toggle-span").toggleClass("fa-angle-left");
+        $("#toggle-span").toggleClass("fa-angle-right");
+    });
+    </script>
+    <%= yield :pgSpecificJS %>
+
+</body>
+
+</html>

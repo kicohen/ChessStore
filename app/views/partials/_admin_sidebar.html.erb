@@ -1,0 +1,42 @@
+<% if @active == 'items' %>
+<li><%= link_to "Items", items_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Items", items_path %></li>
+<% end %>
+
+<% if @active == 'prices' %>
+<li><%= link_to "Prices", item_prices_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Prices", item_prices_path %></li>
+<% end %>
+
+<% if @active == 'purchases' %>
+<li><%= link_to "Purchases", purchases_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Purchases", purchases_path %></li>
+<% end %>
+
+
+<% if @active == 'orders' %>
+<li><%= link_to "Orders", orders_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Orders", orders_path %></li>
+<% end %>
+
+<% if @active == 'employees' %>
+<li><%= link_to "Employees", employees_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Employees", employees_path %></li>
+<% end %>
+
+<% if @active == 'schools' %>
+<li><%= link_to "Schools", schools_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Schools", schools_path %></li>
+<% end %>
+
+<% if @active == 'users' %>
+<li><%= link_to "Customers", users_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Customers", users_path %></li>
+<% end %>

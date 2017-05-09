@@ -1,5 +1,6 @@
 <% if logged_in? %>
   <% if current_user.role? :admin %>
+  	<%= render partial: "partials/admin_navigation" %>
   <% elsif current_user.role? :customer %>
     <%= render partial: "partials/customer_nav" %>
   <% end %>

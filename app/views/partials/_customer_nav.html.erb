@@ -12,20 +12,11 @@
       <%= link_to "Store", stores_index_path, class: "nav-link" %>
     </li>
     <li class="nav-item">
-      <%= link_to "Privacy", privacy_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "About", about_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Contact", contact_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
       <%= link_to "My Account", users_edit_path, class: "nav-link" %>
     </li>
-      <li class="nav-item">
-        <a class="nav-link" onclick="openNav()">Cart</a>
-      </li>
+    <li class="nav-item">
+      <%= link_to "Cart", cart_path, class: "nav-link", remote: true %>
+    </li>
     </ul>
   </div>
 </nav>

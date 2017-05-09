@@ -1,4 +1,6 @@
 class StoresController < ApplicationController
+  layout "admin"
+  
   include ChessStoreHelpers
 
   def index
