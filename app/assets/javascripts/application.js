@@ -40,6 +40,7 @@ $(document).keydown(function(event){
     }
 });
 
+
 $(document).keyup(function(){
     shftIsPressed = false;
 });
@@ -86,6 +87,20 @@ if (passwords.length > 0){
   passwords[i].addEventListener("onfocusout", changeType, false);
 }
 }
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "350px";
+    document.getElementById("overlay").style.backgroundColor = "rgba(0,0,0,0.4)";
+    document.getElementById("overlay").style.zIndex = "9998";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("overlay").style.backgroundColor = "";
+    document.getElementById("overlay").style.zIndex = "0";
+}
+
+document.getElementById("overlay").addEventListener("click", closeNav, false);
 
 /**
  * Placeholdem - Placeholder Caret Animation

@@ -1,9 +1,13 @@
 <ul class="list-group">
-	<% @cart.each do |item| %>
-		 <li class="list-group-item">
-			 <%= item.item.name %>&nbsp;&nbsp;
-			 <span class="badge badge-primary"><%= item.quantity %></span> &nbsp;&nbsp;
-			 <span class="badge badge-success"><%= number_to_currency(item.subtotal) %></span>
-		 </li>
-	<% end %>
+  <% if @cart.nil? or @cart.empty? %>
+    <h3>No Items in Cart</h3>
+  <% else %>
+    <% @cart.each do |item| %>
+       <li class="list-group-item">
+         <%= item.item.name %>&nbsp;&nbsp;
+         <span class="badge badge-primary"><%= item.quantity %></span> &nbsp;&nbsp;
+         <span class="badge badge-success"><%= number_to_currency(item.subtotal) %></span>
+       </li>
+    <% end %>
+  <% end %>
 </ul>

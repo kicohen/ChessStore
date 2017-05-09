@@ -1,6 +1,13 @@
-<nav class="navbar navbar-light rounded navbar-toggleable-md">
-<div class="collapse navbar-collapse justify-content-md-center" id="containerNavbarCenter">
-  <ul class="navbar-nav">
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">A&amp;M Chess Store</a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Home", home_path, class: "nav-link" %>
+      </li>
     <li class="nav-item">
       <%= link_to "Store", stores_index_path, class: "nav-link" %>
     </li>
@@ -14,11 +21,11 @@
       <%= link_to "Contact", contact_path, class: "nav-link" %>
     </li>
     <li class="nav-item">
-      <%= link_to "Cart", stores_cart_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
       <%= link_to "My Account", users_edit_path, class: "nav-link" %>
     </li>
-  </ul>
-</div>
+      <li class="nav-item">
+        <a class="nav-link" onclick="openNav()">Cart</a>
+      </li>
+    </ul>
+  </div>
 </nav>

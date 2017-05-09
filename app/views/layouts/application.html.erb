@@ -10,6 +10,7 @@
   <meta name="description" content="Alex and Mark Chess Store Information Systems Application Design and Development">
   <!-- Bootstrap 4 -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <!-- Font Awesome -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Fonts -->
@@ -18,7 +19,6 @@
   <%= csrf_meta_tags %>
   <%= render 'partials/favicon' %>
 </head>
-
 <body>
 <script type="text/javascript">
 <% if logged_in? %>
@@ -35,25 +35,34 @@
   console.log("Guest")
 <% end %>
 </script>
-<!-- Side Heading -->
-<div id="main-heading">
-<%= link_to(home_path) do %>
-  <h1 class="right">A&amp;M Chess Store</h1>
-<% end %>  
-</div>
+<div class="background-image" id="main">
+
+
+<%= render :partial => "partials/nav" %>
 
 <%= render :partial => "partials/flash" %>
 
 <main>
-  <%= render :partial => "partials/nav" %>
+<div id="main-content">
   <%= yield %>
+</div>
 </main>
+
+<%= render :partial => "partials/footer" %>
 
 <%= render :partial => "partials/search" %>
 
-<%= render :partial => "partials/admin_navigation" %>
 
 <%= render :partial => "partials/content_menu" %>
+</div>
+<div id="overlay"></div>
+<% if logged_in? %>
+  <% if current_user.role? :customer %>
+    <%= render :partial => "partials/cart" %>
+  <% end %>
+<% else %> 
+  <%= render :partial => "partials/cart" %>
+<% end %>
 <!-- Javascript -->
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
