@@ -1,0 +1,18 @@
+<div id="search_results" class="hide">
+	<% unless @items.nil? or @items.empty? %>
+	<ul>
+		<li> Items </li>
+		<% @items.each do |item| %>
+			<li class="search_result"><%= item.name %></li>
+		<% end %>
+	</ul>
+	<% end %>
+	<% unless @schools.nil? or @schools.empty? %>	
+	<ul>
+		<li> Schools </li>
+		<% @schools.each do |school| %>
+			<li class="search_result"><%= school.name %></li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>

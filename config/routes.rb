@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'search/input'
+
+  get 'search/output'
+
   get 'users/show'
 
   get 'users/index'

@@ -197,12 +197,52 @@ html, body{
 
 #search input{
   width: calc(100% - 70px);
+  padding: 0;
+  margin: 0;
+  display: inline-block;
   padding-left: 15px;
   background-color: #22231D;
   font-size: 1em;
   color: white;
   border: 0;
   outline: none;
+}
+
+#search_results{
+  position: fixed;
+  width: 50%;
+  top: calc(30vh + 22px);
+  left: 25%;
+  height: 25vh;
+  background-color: #22231D;
+  color: white;
+  overflow-y: auto;
+}
+
+#search_results ul{
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;  
+} 
+
+#search_result li{
+  width: 100%;
+  padding-left: 50px;
+}
+
+#search_results ul li:first-child{
+  background-color: #3B3B3B;
+  padding-left: 20px;
+}
+
+.search_result{
+  padding-left: 40px;
+}
+
+.search_result:hover {
+  background-color: white;
+  color: black;
 }
 
 .right {
@@ -390,7 +430,7 @@ input[type='tel'],input[type='text'],input[type='number'],input[type="password"]
   border-top-color: #ccc;
 }
 
-
+ 
 .hide-table tr{
   display: none;
 }
@@ -405,4 +445,8 @@ input[type='tel'],input[type='text'],input[type='number'],input[type="password"]
 
 .item-picture{
   width: 50%;
+}
+
+#search_form_submit_button{
+  display: none !important;
 }

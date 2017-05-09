@@ -34,6 +34,14 @@ class Item < ActiveRecord::Base
   # Other methods
   attr_reader :destroyable
   
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+  
   def current_price
     curr = self.item_prices.wholesale.current.first
     if curr.nil?

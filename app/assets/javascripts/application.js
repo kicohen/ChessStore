@@ -1,22 +1,12 @@
 //= require jquery
 //= require jquery_ujs
 
-document.addEventListener("click", toggleMenu);
-var menu = document.getElementById('menu');
+// Search functionality
+
 var search = document.getElementById('search');
 var searchInput = document.getElementById('searchInput');
 var displayMenu = false;
 var shftIsPressed = false;
-
-function showMenu(position){
-  menu.style.left = position.clientX - 150 + 'px';
-  menu.style.top = position.clientY - 150 + 'px';
-    menu.classList = 'shown';
-}
-
-function hideMenu(){
-    menu.classList = '';
-}
 
 function showSearch(){
   search.classList = '';
@@ -26,6 +16,7 @@ function showSearch(){
 
 function hideSearch(){
   search.classList = 'hide';
+  document.getElementById("search_results").classList = 'hide';
 }
 
 function toggleSearch(){
@@ -37,8 +28,12 @@ function toggleSearch(){
 }
 
 $(document).keydown(function(event){
-    if(event.which=="16")
-        shftIsPressed = true;
+    if (event.which == "16"){
+      shftIsPressed = true;
+    }
+    if (event.which == "27"){
+      hideSearch();
+    }
     if (event.which=="32"&&shftIsPressed){
       event.preventDefault();
       toggleSearch();
@@ -49,63 +44,32 @@ $(document).keyup(function(){
     shftIsPressed = false;
 });
 
-function toggleMenu(position) {
-  if (displayMenu) {
-    hideMenu();
-  } else if (shftIsPressed) {
-    showMenu(position);
-  }
-  hideSearch();
-  displayMenu = !displayMenu;
-}
+$(document).ready(function(){
+   $('#searchInput').on('input',function(e){
+       console.log("searching");
+       $('#search_form_submit_button').click();
+    });
+});
 
-// JAVASCRIPT (jQuery)
+// Right Click Functionality
 
-// Trigger action when the contexmenu is about to be shown
 $(document).bind("contextmenu", function (event) {
     
-    // Avoid the real one
-    event.preventDefault();
-    
-    // Show contextmenu
+    event.preventDefault();    
     $(".custom-menu").finish().toggle(100).
-    
-    // In the right position (the mouse)
     css({
         top: event.pageY + "px",
         left: event.pageX + "px"
     });
 });
 
-// If the document is clicked somewhere
-$(document).bind("mousedown", function (e) {
-    
-    // If the clicked element is not the menu
+$(document).bind("mousedown", function (e) {    
     if (!$(e.target).parents(".custom-menu").length > 0) {
-        
-        // Hide it
         $(".custom-menu").hide(100);
     }
 });
 
-// If the menu element is clicked
-$(".custom-menu li").click(function(){
-    
-    // This is the triggered action name
-    switch($(this).attr("data-action")) {
-        
-        // A case for each action. Your actions here
-        case "first": alert("first"); break;
-        case "second": alert("second"); break;
-        case "third": alert("third"); break;
-    }
-  
-    // Hide it AFTER the action was triggered
-    $(".custom-menu").hide(100);
-  });
-
 function changeType(){
-  console.log("changing type");
   for (var i=0; i< passwords.length; i++){
   if (passwords[0].type == "text"){
     passwords[0].type = "password";
@@ -115,9 +79,7 @@ function changeType(){
 }
 }
 
-
 var passwords = document.getElementsByClassName('password-field-hack');
-console.log(passwords);
 if (passwords.length > 0){
   for (var i=0; i< passwords.length; i++){
   passwords[i].addEventListener("onfocus", changeType, false);

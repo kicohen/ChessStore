@@ -1,4 +1,9 @@
 <!-- Spotlight Search -->
 <div id="search" class="hide">
-  <span class="fa fa-search"></span><input id="searchInput" type="text" name="" placeholder="Search">
+<%= form_tag search_output_path, :method => "get", remote: true do %>
+  <span class="fa fa-search"></span><%= text_field_tag :search, params[:search], id: "searchInput", autocomplete:"off" %>
+   <%= submit_tag "Search", :name => nil, id: 'search_form_submit_button', class: "hide" %>
+<% end %>
 </div>
+
+<%= render partial: "partials/search_results" %>
