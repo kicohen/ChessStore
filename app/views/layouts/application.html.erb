@@ -47,6 +47,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <!-- Custom -->
 <script type="text/javascript">
+function openNav() {
+    document.getElementById("mySidenav").style.width = "350px";
+    document.getElementById("overlay").style.backgroundColor = "rgba(0,0,0,0.4)";
+    document.getElementById("overlay").style.zIndex = "9998";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("overlay").style.backgroundColor = "";
+    document.getElementById("overlay").style.zIndex = "-10";
+}
+
+
   document.getElementById("overlay").addEventListener("click", closeNav, false);
 </script>
 <%= javascript_include_tag "application" %>

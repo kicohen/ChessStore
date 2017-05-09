@@ -88,18 +88,6 @@ if (passwords.length > 0){
 }
 }
 
-function openNav() {
-    document.getElementById("mySidenav").style.width = "350px";
-    document.getElementById("overlay").style.backgroundColor = "rgba(0,0,0,0.4)";
-    document.getElementById("overlay").style.zIndex = "9998";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("overlay").style.backgroundColor = "";
-    document.getElementById("overlay").style.zIndex = "-10";
-}
-
 $(window).scroll(function() {
    var wH = $(window).height();
    var wS = $(this).scrollTop();

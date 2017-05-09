@@ -1,21 +1,18 @@
 <section id="main">
   <%= link_to( image_tag("logo.png")) %>
+  <nav>
+  <ul id="home_nav">
+      <li><%= link_to "About", home_path , :id=>'about_button' %></li>
+      <li><%= link_to "Store",  home_path %></li>
+      <li><%= link_to "Contact",  home_path %></li>
+      <li><%= link_to "Privacy",  home_path %></li>
+          <li class="nav-item">
+      <%= link_to "Cart", stores_cart_path, class: "nav-link", remote: true %>
+    </li>
+    </ul>
+  </nav>
 </section>
 <section id="about">
-  <div class="user-profile">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user" aria-hidden="true"></span></a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to "Items", items_path, :class => "dropdown-item" %>
-          <%= link_to "Purchases", purchases_path, :class => "dropdown-item" %>
-          <%= link_to "Prices", item_prices_path, :class => "dropdown-item" %>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Logout</a>
-          </div>
-      </li>
-    </ul>
-  </div>
   <div id="about_left" class="about_left">    
     <%= link_to( image_tag("about.png")) %>
   </div>

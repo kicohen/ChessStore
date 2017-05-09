@@ -2,7 +2,6 @@
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,17 +9,21 @@
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :email, input_html: {placeholder: "Email"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :password, input_html: {placeholder: "Password"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :password_confirmation, input_html: {placeholder: "Password Confirmation"}, label: false %>
-  </p>
-  <p><%= f.submit nil, :class => 'btn btn-success full-width' %></p>
+  <div class="form-group">
+    <label class="white-text">Username</label>
+    <%= f.input :username, input_html: {placeholder: "Username", class: "form-control"}, label: false, wrapper: false %>
+  </div>
+  <div class="form-group">
+    <label class="white-text">Email</label>
+    <%= f.input :email, input_html: {placeholder: "Email", class: "form-control"}, label: false, wrapper: false %>
+  </div>
+  <div class="form-group">
+    <label class="white-text">Password</label>
+    <%= f.input :password, input_html: {placeholder: "Password", class: "form-control"}, label: false, wrapper: false %>
+  </div>
+  <div class="form-group">
+    <label class="white-text">Password Confirmation</label>
+    <%= f.input :password_confirmation, input_html: {placeholder: "Password Confirmation", class: "form-control"}, label: false, wrapper: false %>
+  </div>
+  <p><%= f.submit nil, :class => 'btn btn-outline-success' %></p>
 <% end %>

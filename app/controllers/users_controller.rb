@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  layout "admin"
-  
+  layout :resolve_layout
+
   def new
     @user = User.new
   end
@@ -44,6 +44,15 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def resolve_layout
+    case action_name
+    when "index"
+      "admin"
+    else
+      "application"
+    end
   end
   
 end

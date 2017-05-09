@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def new
+    # in case they make a new account instead
+    @user = User.new
   end
 
   def create

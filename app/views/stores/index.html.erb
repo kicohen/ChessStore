@@ -1,5 +1,5 @@
 <br>
 <h1>Store</h1>
 <% @items.each do |item| %>
-  <%= link_to item.name, details_path(item) %> <%= link_to "Add to Cart", add_to_cart_path(item) %><br>
+  <%= link_to item.name, details_path(item) %> <%= link_to "Add to Cart", add_to_cart_path(item), remote: true %><br>
 <% end %>
