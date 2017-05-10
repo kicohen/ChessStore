@@ -5,28 +5,31 @@
       <thead>
         <tr>
           <th>Item</th>
-          <th>Quantity</th>
+          <th></th>
+          <th class="align-center">Quantity</th>
           <th>Subtotal</th>
         </tr>
         </thead>
     <% @cart.each do |item| %>
        <tr>
-         <td><%= item.item.name %></td>
-         <td><%= item.quantity %></td>
+         <td><%= item.item.name %>
+          <td> <%= link_to "X", remove_from_cart_path(item.item),remote: true, class: "btn btn-danger btn-sm" %></td>
+         </td>
+         <td class="align-center"><%= item.quantity %></td>
          <td><%= number_to_currency(item.subtotal) %></td>
        </tr>
     <% end %>
     <tfoot>
       <tr>
-        <td colspan="2" class="align-right"><strong>Total:</strong> </td>
+        <td colspan="3" class="align-right"><strong>Total:</strong> </td>
         <td><%= number_to_currency(@subtotal) %></td>
       </tr>
       <tr>
-        <td colspan="2" class="align-right"><strong>Shipping:</strong> </td>
+        <td colspan="3" class="align-right"><strong>Shipping:</strong> </td>
         <td><%= number_to_currency(@shipping) %></td>
       </tr>
       <tr>
-        <td colspan="2" class="align-right"><strong>Total:</strong> </td>
+        <td colspan="3" class="align-right"><strong>Total:</strong> </td>
         <td><%= number_to_currency(@total) %></td>
       </tr>
     </tfoot>
