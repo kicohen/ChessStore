@@ -1,41 +1,40 @@
-<% if @active == 'items' %>
+<% if controller.controller_name == 'items' %>
 <li><%= link_to "Items", items_path, :class=>'active' %></li>
 <% else %>
 <li><%= link_to "Items", items_path %></li>
 <% end %>
 
-<% if @active == 'prices' %>
+<% if controller.controller_name == 'item_prices' %>
 <li><%= link_to "Prices", item_prices_path, :class=>'active' %></li>
 <% else %>
 <li><%= link_to "Prices", item_prices_path %></li>
 <% end %>
 
-<% if @active == 'purchases' %>
+<% if controller.controller_name == 'purchases' %>
 <li><%= link_to "Purchases", purchases_path, :class=>'active' %></li>
 <% else %>
 <li><%= link_to "Purchases", purchases_path %></li>
 <% end %>
 
-
-<% if @active == 'orders' %>
+<% if controller.controller_name == 'orders' %>
 <li><%= link_to "Orders", orders_path, :class=>'active' %></li>
 <% else %>
 <li><%= link_to "Orders", orders_path %></li>
 <% end %>
 
-<% if @active == 'employees' %>
+<% if controller.controller_name == 'employees' %>
 <li><%= link_to "Employees", employees_path, :class=>'active' %></li>
 <% else %>
 <li><%= link_to "Employees", employees_path %></li>
 <% end %>
 
-<% if @active == 'schools' %>
+<% if controller.controller_name == 'schools' %>
 <li><%= link_to "Schools", schools_path, :class=>'active' %></li>
 <% else %>
 <li><%= link_to "Schools", schools_path %></li>
 <% end %>
 
-<% if @active == 'users' %>
+<% if controller.controller_name == 'users' %>
 <li><%= link_to "Customers", users_path, :class=>'active' %></li>
 <% else %>
 <li><%= link_to "Customers", users_path %></li>

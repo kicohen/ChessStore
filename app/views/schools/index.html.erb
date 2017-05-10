@@ -3,3 +3,7 @@
                                                          primary: "active_schools", 
                                                          secondary: nil,
                                                          sidebar: nil,} %>
+
+<% content_for :pg_specific_links do %>
+ <li class="nav-item"><%= link_to "New School", new_school_path, remote: true, class: "nav-link" %></li>
+<% end %>

@@ -1,0 +1,17 @@
+<% if controller.controller_name == 'orders' %>
+<li><%= link_to "Orders", orders_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Orders", orders_path %></li>
+<% end %>
+
+<% if controller.controller_name == 'schools' %>
+<li><%= link_to "Schools", schools_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Schools", schools_path %></li>
+<% end %>
+
+<% if controller.controller_name == 'users' %>
+<li><%= link_to "Customers", users_path, :class=>'active' %></li>
+<% else %>
+<li><%= link_to "Customers", users_path %></li>
+<% end %>

@@ -8,7 +8,8 @@
         
       </div>
         <% if @cart.nil? or @cart.empty? %>
-        <% else %> 
+        <% else %>
+        <%= link_to "Checkout", stores_checkout_path, class: "btn btn-outline-primary full-width" %> 
         <% end %>
     </div>
   </div>

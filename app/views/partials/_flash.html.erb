@@ -1,6 +1,6 @@
 <% flash.each do |name, msg| %>
 
-  <div id="alert" class="alert alert-<%= flash[:notice] ? "success" : "danger" %> alert-dismissible no_rounded" role="alert">
+  <div id="alert" class="alert alert-<%= flash[:notice] ? "success" : "danger" %> alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <%= msg %>
   </div>

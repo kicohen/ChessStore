@@ -1,0 +1,5 @@
+console.log("Got here");
+
+$("#modalTitle").html(" <%= @item.name %> ");
+$("#modalContent").replaceWith(" <%= j render('items/customer_item_details') %> ");
+$('#ajaxModal').modal('show');

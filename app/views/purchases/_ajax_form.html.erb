@@ -1,13 +1,15 @@
+<br>
 <%= simple_form_for @purchase, remote: true, html: { class: 'form-horizontal', multipart: true } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> Purchase</legend>
-
     <%= f.input :item_id, :as => :hidden, input_html: {value: @item.id} %>
-    <%= f.input :quantity, input_html: {class: "avg"} %>
-
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-success' %>
+    <div class="form-group row">
+    <label class="col-form-label col-1">Quantity: </label>
+    <div class="col-2">
+    <%= f.input :quantity, input_html: {class: "form-control"}, label: false, wrapper: false %>
+    </div>
+    <div class="col-3">
+      <%= f.submit nil, :class => 'btn btn-success col-12' %>
+    </div>
     </div>
   </fieldset>
 <% end %>

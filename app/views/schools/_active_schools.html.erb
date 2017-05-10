@@ -1,15 +1,20 @@
 <% unless @schools.nil? || @schools.empty? %> 
-  <div class="col-sm-4">
-  <div class="card">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item active">Schools</li>
+  <table class="table table-striped">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th>School Name</th>
+        <th>Grades</th>
+        <th>State</th>
+      </tr>
+      </thead>
       <% @schools.each do |school| %>
-        <li class="list-group-item">
-          <%= link_to school.name, school_path(school) %>
-          <br>
-        </li>
+      <tr>
+        <td><%= link_to school.name, school_path(school) %></td>
+        <td><% if school.min_grade == 0 %> K <% else %> <%= school.min_grade %> <% end %> through <%= school.max_grade %></td>
+        <td><%= school.state %></td>
+      </tr>
       <% end %>
-  </ul>
+  </table>
 </div>
 <br>
 <br>

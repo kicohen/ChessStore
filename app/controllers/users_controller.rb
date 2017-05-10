@@ -47,10 +47,13 @@ class UsersController < ApplicationController
   end
 
   def resolve_layout
-    case action_name
-    when "index"
+    if action_name == "index"
       "admin"
-    else
+    elsif action_name == "show" and current_user.role? :customer
+      "application"
+    elsif action_name == "show"
+      "admin"
+    else 
       "application"
     end
   end

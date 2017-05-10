@@ -25,7 +25,6 @@ class StoresController < ApplicationController
     @shipping = calculate_cart_shipping
     @subtotal = calculate_cart_items_cost
     @total = @shipping + @subtotal
-  	
     @order = Order.new
   end
 
