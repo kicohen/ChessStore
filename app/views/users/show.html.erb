@@ -1,7 +1,18 @@
-<div class="row">
-  <div class="container col-md-12">
-  	<div class="">
+<%= render partial: "partials/customer_nav" %>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row">
+  	<div class="col-md-5">
+  	<div class="jumbotron">
     	<%= render :partial => "user_details" %>
+  	</div>
+  	</div>
+  	<div class="col-md-7">
+  		<%= render :partial => "orders/recent_orders" %>
   	</div>
   </div>
 </div>

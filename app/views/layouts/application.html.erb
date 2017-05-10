@@ -33,22 +33,9 @@
 <%= render :partial => "partials/content_menu" %>
 
 <div id="overlay"></div>
-<!-- Javascript -->
 <%= javascript_include_tag "application" %>
-<!-- Custom -->
 <script type="text/javascript">
-function openNav() {
-    document.getElementById("mySidenav").style.width = "550px";
-    document.getElementById("overlay").style.backgroundColor = "rgba(0,0,0,0.4)";
-    document.getElementById("overlay").style.zIndex = "9998";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("overlay").style.backgroundColor = "";
-    document.getElementById("overlay").style.zIndex = "-10";
-}
-  document.getElementById("overlay").addEventListener("click", closeNav, false);
+document.getElementById("overlay").addEventListener("click", closeNav, false);
 </script>
 </body>
 </html>

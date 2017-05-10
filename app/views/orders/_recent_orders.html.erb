@@ -31,7 +31,7 @@
             <td colspan="2"><%= link_to item.item.name, item_path(item.item) %></td>
             <td><%= item.quantity %></td>
             <% if item.shipped_on.nil? %>
-              <% if current_user.role? :manager %>
+              <% if current_user.role? :manager or current_user.role? :customer %>
                 <td>Not Shipped</td>
               <% else %>
                 <td>

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  layout "admin"
+  layout :resolve_layout
   
   load_and_authorize_resource
   before_action :set_order, only: [:show, :edit, :update]
@@ -63,6 +63,14 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:date, :school_id, :user_id, :grand_total, :payment_receipt, :credit_card_number, :expiration_year, :expiration_month)
+  end
+
+  def resolve_layout
+    if current_user.role? :customer
+      "application"
+    else 
+      "admin"
+    end
   end
 
 end

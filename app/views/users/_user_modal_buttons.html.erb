@@ -1,4 +1,4 @@
 <div id="modalButtons">
 	<%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-outline-info" %>
-	<%= link_to "My Orders", orders_path, class: "btn btn-outline-success" %>
+	<%= link_to "My Orders", user_path(current_user), class: "btn btn-outline-success" %>
 </div>
