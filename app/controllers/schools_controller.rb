@@ -1,5 +1,7 @@
 class SchoolsController < ApplicationController
   layout "admin"
+
+  include ChessStoreHelpers
   
   load_and_authorize_resource
   before_action :set_school, only: [:show, :edit, :update, :destroy]  
@@ -14,12 +16,15 @@ class SchoolsController < ApplicationController
 
   def create
     @school = School.create(school_params)
-    
-    if @school.save
-      redirect_to school_path(@school), notice: "Successfully created #{@school.name}."
-    else
-      render action: 'new'
-    end
+      if @school.save
+          @cart = get_list_of_items_in_cart
+          @shipping = calculate_cart_shipping
+          @subtotal = calculate_cart_items_cost
+          @total = @shipping + @subtotal
+          @order = Order.new
+      else
+        render action: 'new'
+      end
   end
 
   def edit

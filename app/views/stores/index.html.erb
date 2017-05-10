@@ -1,5 +1,23 @@
 <br>
 <h1>Store</h1>
+<div class="container">
+<div class="row">
+<div class="card-deck">
 <% @items.each do |item| %>
-  <%= link_to item.name, details_path(item) %> <%= link_to "Add to Cart", add_to_cart_path(item), remote: true %><br>
+  	<div class="card" style="width: 20rem; margin-bottom: 20px;">
+	  <% if item.picture_url.nil? %>
+	  <%= image_tag "no_image.svg", class: "card-img-top" %>
+	  <% else %>
+	  <%= image_tag item.picture_url, class: "card-img-top" %>
+	  <% end %>
+	  <div class="card-block">
+	    <h4 class="card-title"><%= item.name %></h4>
+	    <p class="card-text"><%= truncate(item.description, length: 100) %></p>
+	    <%= link_to "More Information", details_path(item), class: "btn btn-success" %><br>
+	    <%= link_to "Add to Cart", add_to_cart_path(item), remote: true, class: "btn btn-primary" %>
+	  </div>
+	</div>
 <% end %>
+</div>
+</div>
+</div>

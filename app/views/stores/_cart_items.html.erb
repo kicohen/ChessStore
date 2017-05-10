@@ -1,13 +1,35 @@
-<ul class="list-group">
   <% if @cart.nil? or @cart.empty? %>
     <h3>No Items in Cart</h3>
   <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+        </thead>
     <% @cart.each do |item| %>
-       <li class="list-group-item">
-         <%= item.item.name %>&nbsp;&nbsp;
-         <span class="badge badge-primary"><%= item.quantity %></span> &nbsp;&nbsp;
-         <span class="badge badge-success"><%= number_to_currency(item.subtotal) %></span>
-       </li>
+       <tr>
+         <td><%= item.item.name %></td>
+         <td><%= item.quantity %></td>
+         <td><%= number_to_currency(item.subtotal) %></td>
+       </tr>
     <% end %>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="align-right"><strong>Total:</strong> </td>
+        <td><%= number_to_currency(@subtotal) %></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="align-right"><strong>Shipping:</strong> </td>
+        <td><%= number_to_currency(@shipping) %></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="align-right"><strong>Total:</strong> </td>
+        <td><%= number_to_currency(@total) %></td>
+      </tr>
+    </tfoot>
+    </table>
+    <%= link_to "Checkout", stores_checkout_path, class: "btn btn-outline-primary full-width" %>
   <% end %>
-</ul>

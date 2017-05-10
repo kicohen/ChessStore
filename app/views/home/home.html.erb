@@ -2,10 +2,10 @@
   <%= link_to( image_tag("logo.png")) %>
   <nav>
   <ul id="home_nav">
-      <li><%= link_to "About", home_path , :id=>'about_button' %></li>
-      <li><%= link_to "Store",  home_path %></li>
-      <li><%= link_to "Contact",  home_path %></li>
-      <li><%= link_to "Privacy",  home_path %></li>
+      <li><%= link_to "About", about_path , :id=>'about_button' %></li>
+      <li><%= link_to "Store",  stores_index_path %></li>
+      <li><%= link_to "Contact",  contact_path %></li>
+      <li><%= link_to "Privacy", privacy_path %></li>
           <li class="nav-item">
       <%= link_to "Cart", stores_cart_path, class: "nav-link", remote: true %>
     </li>

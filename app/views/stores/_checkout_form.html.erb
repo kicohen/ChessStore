@@ -1,0 +1,36 @@
+<%= simple_form_for @order, :url => stores_create_path, html: { class: 'form-horizontal', multipart: true, id: "checkout_form" } do |f| %>
+  <fieldset>
+    <legend>Checkout</legend>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">School</label>
+    <div class="col-7">
+    <%= f.input :school_id, collection: School.active.to_a, wrapper: false, label: false, input_html: {class: "form-control"}%>
+    </div>
+    <div class="col-3">
+    <%= link_to "Create School", new_school_path, remote: true, class: "btn btn-outline-primary col-12" %>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Credit Card Number</label>
+    <div class="col-10">
+    <%= f.input :credit_card_number, wrapper: false, label: false, input_html: {class: "form-control"}%>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Expiration Month</label>
+    <div class="col-4">
+    <%= f.input :expiration_month, wrapper: false, label: false, input_html: {class: "form-control"} %>
+    </div>
+    <label class="col-2 col-form-label">Expiration Year</label>
+    <div class="col-4">
+    <%= f.input :expiration_year, input_html: {type: 'number', value: Date.today.year }, wrapper: false, label: false, input_html: {class: "form-control"} %>
+    </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-outline-success full-width' %>
+      <br>
+      <br>
+      <%= link_to 'Cancel', stores_index_path, :class => 'btn btn-outline-danger full-width' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -12,6 +12,9 @@ class StoresController < ApplicationController
   def cart
   	@cart = session[:cart]
     @cart = get_list_of_items_in_cart
+    @shipping = calculate_cart_shipping
+    @subtotal = calculate_cart_items_cost
+    @total = @shipping + @subtotal
   end
 
   def checkout
@@ -19,7 +22,11 @@ class StoresController < ApplicationController
       redirect_to login_path, notice: "You must log in or create an account to checkout"
     end
     @cart = get_list_of_items_in_cart
-  	@order = Order.new
+    @shipping = calculate_cart_shipping
+    @subtotal = calculate_cart_items_cost
+    @total = @shipping + @subtotal
+  	
+    @order = Order.new
   end
 
   def add_to_cart
@@ -42,7 +49,7 @@ class StoresController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     @order.date = Date.today
-    @order.grand_total = calculate_cart_items_cost
+    @order.grand_total = calculate_cart_items_cost + calculate_cart_shipping
     if @order.save
       save_each_item_in_cart(@order)
       clear_cart

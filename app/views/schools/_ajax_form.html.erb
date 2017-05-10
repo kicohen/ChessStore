@@ -1,58 +1,57 @@
-<%= simple_form_for @school, html: {multipart: true } do |f| %>
+<div class="modal-body" id="modalContent">
+<%= simple_form_for @school, remote: true, html: {multipart: true } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> School</legend>
     <div class="row form-group">
-    <label class="col-form-label col-2">Name</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">Name</label>
+    <div class="col-9">
     <%= f.input :name, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     </div>
     <div class="row form-group">
-    <label class="col-form-label col-2">Street 1</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">Street 1</label>
+    <div class="col-9">
     <%= f.input :street_1, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     </div>
     <div class="row form-group">
-    <label class="col-form-label col-2">Street 2</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">Street 2</label>
+    <div class="col-9">
     <%= f.input :street_2, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     </div>
     <div class="row form-group">
-    <label class="col-form-label col-2">City</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">City</label>
+    <div class="col-9">
     <%= f.input :city, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     </div>
     <div class="row form-group">
-    <label class="col-form-label col-2">Zip</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">Zip</label>
+    <div class="col-9">
     <%= f.input :zip, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     </div>
     <div class="row form-group">
-    <label class="col-form-label col-2">State</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">State</label>
+    <div class="col-9">
     <%= f.input :state, collection: School::STATES_LIST, label: false, wrapper: false, input_html: {class: "form-control"} %>
     </div>
     </div>
     <div class="row form-group">
-    <label class="col-form-label col-2">Min Grade</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">Min Grade</label>
+    <div class="col-9">
     <%= f.input :min_grade, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     </div>
     <div class="row form-group">
-    <label class="col-form-label col-2">Max Grade</label>
-    <div class="col-10">
+    <label class="col-form-label col-3">Max Grade</label>
+    <div class="col-9">
     <%= f.input :max_grade, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     </div>
     <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-success full-width' %>
-      <br><br>
-      <%= link_to 'Cancel', schools_path, :class => 'btn btn-danger full-width' %>
+      <%= f.submit nil, :class => 'btn btn-outline-success full-width' %>
     </div>
   </fieldset>
 <% end %>
+</div>

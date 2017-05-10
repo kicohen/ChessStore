@@ -5,20 +5,11 @@
         <h3>Your Cart</h3>
         <hr>
         <%= render partial: "stores/cart_items" %>
+        
       </div>
-      <div class="lower">
         <% if @cart.nil? or @cart.empty? %>
         <% else %> 
-        <table class="full-width">
-          <tr>
-            <td>Total</td>
-            <td class="align-right">$0.00</td>
-          </tr>
-        </table>
-        <br>
-          <%= link_to "Checkout", stores_checkout_path, class: "btn btn-primary full-width white-text" %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>
