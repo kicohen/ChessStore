@@ -16,8 +16,8 @@ class ItemsController < ApplicationController
 
   def show
     # get the price history for this item
-    @price_history = @item.item_prices.chronological.wholesale.paginate(:page => params[:page], :per_page => 9)
-    @manufacturer_price_history = @item.item_prices.chronological.manufacturer.paginate(:page => params[:page], :per_page => 9)
+    @price_history = @item.item_prices.chronological.wholesale
+    @manufacturer_price_history = @item.item_prices.chronological.manufacturer
     @item_price = ItemPrice.new
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).active.alphabetical.to_a - [@item]
