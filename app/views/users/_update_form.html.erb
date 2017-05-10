@@ -10,20 +10,35 @@
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.input :first_name, input_html: {placeholder: "First Name"}, label: false %>
-  </p>
-    <p>
-    <%= f.input :last_name, input_html: {placeholder: "Last Name"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :username, input_html: {placeholder: "Username"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :email, input_html: {placeholder: "Email Address"}, label: false %>
-  </p>
-  <p>
-    <%= f.input :phone, input_html: {placeholder: "Phone Number"}, label: false %>
-  </p>
+  <div class="form-group row">
+  <label class="col-2 col-form-label">First Name</label>
+  <div class="col-10">
+    <%= f.input :first_name, label: false, wrapper: false, input_html: {class: "form-control"} %>
+  </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Last Name</label>
+    <div class="col-10">
+    <%= f.input :last_name, label: false, wrapper: false, input_html: {class: "form-control"} %>
+  </div>
+  </div>
+  <div class="form-group row">
+  <label class="col-2 col-form-label">Username</label>
+  <div class="col-10">
+    <%= f.input :username, label: false, wrapper: false, input_html: {class: "form-control"} %>
+  </div>
+  </div>
+  <div class="form-group row">
+  <label class="col-2 col-form-label">Email</label>
+  <div class="col-10">
+    <%= f.input :email, label: false, wrapper: false, input_html: {class: "form-control"} %>
+  </div>
+  </div>
+  <div class="form-group row">
+  <label class="col-2 col-form-label">Phone</label>
+  <div class="col-10">
+    <%= f.input :phone, label: false, wrapper: false, input_html: {class: "form-control"} %>
+  </div>
+  </div>
   <p><%= f.submit nil, :class => 'btn btn-success full-width' %></p>
 <% end %>
