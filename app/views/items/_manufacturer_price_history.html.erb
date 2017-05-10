@@ -8,5 +8,8 @@
       </li>
       <% end %>
     </ul>
+    <div class="digg_pagination">
+      <%= will_paginate @manufacturer_price_history, :page_links => false%>
+    </div>
   </div>
 <% end %>
