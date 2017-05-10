@@ -1,24 +1,28 @@
-67272 Chess Store Project: Phase 5 Starter
-===
+# Chess Store Project: Phase 5
+## 67-272 Application Design and Development
+### Kenny Cohen
 
-This is the starter code for Phase 5 of the [67-272 Chess Store Project](http://67272.cmuis.net/projects).  This starter code includes all models from previous phases and passing unit tests for those models.
+### Welcome to the Chess Store:
+#### Once, you have been hired, there are a few helpful hints you will be told on how to be more productive:
+* 1. SHIFT + SPACE works anywhere on the site to search for anything.
+* 2. RIGHT CLICKING will always bring up a nice menu with all of your most important navigation options.
+* 3. If you are working the phone lines and a customer calls to cancel their order, tell them too bad, we don't cancel orders here at the A&M Chess Store
+* 4. If you are working as a manager, your dashboard shows you a list of all items, the number in green is it's current price, the next number is the current warehouse stock, if that number is below the reorder level, it'll be in a red badge.
+* 5. If you are working as a shipper, the plus and minus icons can always be used to get more details about what is in the order.
 
-You will need to run `bundle install` to get the needed testing gems. You can populate the development database with realistic data by running `rake db:populate`.  All passwords are 'secret' in the system for all users. The list of known users include (username, role): 
 
-- Mark ('mark', admin)
-- Alex ('tank', admin)
-- Karen ('kirvine', customer)
-- Ben  ('bjunker', customer)
-- Israel ('imadueme', customer)
-- Mark V ('mvella', customer)
-- Melanie ('melfree', customer)
-- Rick ('rhuang', manager)
-- Becca  ('bkern', manager)
-- Connor ('chanley', shipper)
-- Sarah ('srf', shipper)
+### Versions:
+* Ruby = 2.3.3
+* Rails = 4.2.7
+* Database = sqlite3
 
-There are other 40 customers randomly generated in the system along with 45 schools.  The known customers should have 3-5 orders each and 20 other random customer/school combinations will also have placed orders. (Five of those orders have been placed either today or the day before and haven't been shipped yet, so shipper list will have some items to ship.)
+### CSS Frameworks:
+* Bootstrap = 4.0.0-alpha.6
 
-You have been given some additional starter code, including the Cart module, as discussed in class. You may edit these modules so long as everything works as it is supposed to -- breaking working code can have serious consequences so do so carefully.
+### Javascript Frameworks:
+* JQuery = 3.1.1
+* Tether = 1.4.0
 
-The focus this phase is not so much on the testing as it is designing the user's interactions and experience with the chess store app.
+### Fonts:
+* Roboto
+* Font Awesome
