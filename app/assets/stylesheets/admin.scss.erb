@@ -302,6 +302,7 @@
   color: #757575;
   font-size: 3em;
   padding: 15px; 
+  z-index: 10;
 }
 
 .hide{
@@ -334,6 +335,7 @@
 
 #search_results ul{
   width: 100%;
+  list-style-type: none;
 }
 
 .item-picture{
@@ -365,6 +367,71 @@
   color: black;
 }
 
+#search{
+  width: 50%;
+  position: fixed;
+  top: calc(30vh - 80px);
+  left: 25%;
+  background-color: #22231D;
+  color: #757575;
+  font-size: 3em;
+  padding: 15px; 
+}
+
+.hide{
+  display: none;
+}
+
+#search input{
+  width: calc(100% - 70px);
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  padding-left: 15px;
+  background-color: #22231D;
+  font-size: 1em;
+  color: white;
+  border: 0;
+  outline: none;
+}
+
+#search_results{
+  position: fixed;
+  width: 50%;
+  top: calc(30vh + 22px);
+  left: 25%;
+  height: 25vh;
+  background-color: #22231D;
+  color: white;
+  overflow-y: auto;
+}
+
+#search_results ul{
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;  
+} 
+
+#search_result li{
+  width: 100%;
+  padding-left: 50px;
+  list-style-type: none;
+}
+
+#search_results ul li:first-child{
+  background-color: #3B3B3B;
+  padding-left: 20px;
+}
+
+.search_result{
+  padding-left: 40px;
+}
+
+.search_result:hover {
+  background-color: white;
+  color: black;
+}
 
 .btn-width{
   width: 120px;

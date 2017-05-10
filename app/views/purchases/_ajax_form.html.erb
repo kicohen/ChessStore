@@ -3,12 +3,12 @@
   <fieldset>
     <%= f.input :item_id, :as => :hidden, input_html: {value: @item.id} %>
     <div class="form-group row">
-    <label class="col-form-label col-1">Quantity: </label>
+    <label class="col-form-label col-2">Quantity: </label>
     <div class="col-2">
     <%= f.input :quantity, input_html: {class: "form-control"}, label: false, wrapper: false %>
     </div>
     <div class="col-3">
-      <%= f.submit nil, :class => 'btn btn-success col-12' %>
+      <%= f.submit nil, :class => 'btn btn-success' %>
     </div>
     </div>
   </fieldset>

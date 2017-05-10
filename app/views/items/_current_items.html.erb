@@ -9,7 +9,12 @@
           <br>
           <span class="badge badge-success"><%= number_to_currency item.current_price %></span>
           &nbsp;
-          <span class="badge badge-primary"><%= item.inventory_level %></span>
+          <% if item.inventory_level < item.reorder_level %>
+          <span class="badge badge-danger">
+          <% else %> 
+          <span class="badge badge-primary">
+          <% end %>
+          <%= item.inventory_level %></span>
         </li>
       <% end %>
   </ul>

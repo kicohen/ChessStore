@@ -5,13 +5,12 @@ class SearchController < ApplicationController
   def output
   	search_text = params[:search]
   	@items = Item.search(search_text)
-  	@schools = School.search(search_text)
-  	# @customers = User.customers.search(search_text)
-  	# @employees = User.employees.search(search_text)
-  	p "Searching"
-  	p @items
-  	p @schools
-  	# p @customers
-  	# p @employees
+    if logged_in?
+    	@schools = School.search(search_text)
+      if current_user.role? :manager or current_user.role? :admin
+    	  @customers = User.customers.search(search_text)
+  	    @employees = User.employees.search(search_text)
+      end
+    end
   end
 end

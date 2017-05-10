@@ -3,7 +3,11 @@
 	<ul>
 		<li> Items </li>
 		<% @items.each do |item| %>
-			<li class="search_result"><%= item.name %></li>
+			<% if not logged_in? or current_user.role? :customer %>
+				<li class="search_result"><%= link_to item.name, details_path(item), remote: true %></li>
+			<% else %>
+				<li class="search_result"><%= link_to item.name, item_path(item) %></li>
+			<% end %>
 		<% end %>
 	</ul>
 	<% end %>
@@ -11,7 +15,23 @@
 	<ul>
 		<li> Schools </li>
 		<% @schools.each do |school| %>
-			<li class="search_result"><%= school.name %></li>
+			<li class="search_result"><%= link_to school.name, school_path(school) %></li>
+		<% end %>
+	</ul>
+	<% end %>
+	<% unless @customers.nil? or @customers.empty? %>	
+	<ul>
+		<li> Customers </li>
+		<% @customers.each do |customer| %>
+			<li class="search_result"><%= link_to customer.name, user_path(customer) %></li>
+		<% end %>
+	</ul>
+	<% end %>
+	<% unless @employees.nil? or @employees.empty? %>	
+	<ul>
+		<li> Employees </li>
+		<% @employees.each do |employee| %>
+			<li class="search_result"><%= link_to employee.name, employee_path(employee) %></li>
 		<% end %>
 	</ul>
 	<% end %>

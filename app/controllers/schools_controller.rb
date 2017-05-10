@@ -1,6 +1,8 @@
 class SchoolsController < ApplicationController
   layout "admin"
 
+  layout :resolve_layout
+
   include ChessStoreHelpers
   
   load_and_authorize_resource
@@ -52,5 +54,17 @@ class SchoolsController < ApplicationController
 
   def school_params
     params.require(:school).permit(:name, :street_1, :street_2, :city, :state, :zip, :min_grade, :max_grade)
+  end
+
+  def resolve_layout
+    if logged_in?
+      if current_user.role? :customer
+        "application"
+      else 
+        "admin"
+      end
+    else 
+      "application"
+    end
   end
 end

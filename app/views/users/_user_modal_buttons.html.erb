@@ -1,4 +1,7 @@
 <div id="modalButtons">
 	<%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-outline-info" %>
+	<% if current_user.role? :customer %>
 	<%= link_to "My Orders", user_path(current_user), class: "btn btn-outline-success" %>
+	<% end %>
+	<%= link_to "Logout", logout_path, class: "btn btn-outline-danger" %>
 </div>

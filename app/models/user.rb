@@ -34,6 +34,14 @@ class User < ActiveRecord::Base
     role.downcase.to_sym == authorized_role
   end
   
+  def self.search(search)
+    if search
+      where('first_name LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+  
   # Other methods
   def name
     "#{last_name}, #{first_name}"
