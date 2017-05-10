@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
 
   # For use in authorizing with CanCan
   ROLES = [['Administrator', :admin],['Manager', :manager],['Shipper', :shipper],['Customer',:customer]]
+  EMPLOYEE_TYPES = [['Manager', :manager],['Shipper', :shipper]]
 
   def role?(authorized_role)
     return false if role.nil?

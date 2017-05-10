@@ -1,5 +1,4 @@
-console.log("Got here");
-
 $("#modalTitle").html(" <%= @item.name %> ");
 $("#modalContent").replaceWith(" <%= j render('items/customer_item_details') %> ");
+$("#modalButtons").replaceWith(" <%= j render('item_modal_buttons') %> ");
 $('#ajaxModal').modal('show');

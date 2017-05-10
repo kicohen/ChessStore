@@ -34,14 +34,15 @@ class UsersController < ApplicationController
   end
 
   def index
-    if not logged_in?
+    if logged_in?
       if current_user.role? :admin or current_user.role? :manager
         @users = User.active.customers.alphabetical
       else
         redirect_to root_url
       end
+    else
+      redirect_to root_url 
     end  
-    redirect_to root_url 
   end
 
   def show
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name, :phone)
   end
 
   def resolve_layout

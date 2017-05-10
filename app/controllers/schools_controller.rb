@@ -17,11 +17,15 @@ class SchoolsController < ApplicationController
   def create
     @school = School.create(school_params)
       if @school.save
+        if current_user.role? :customer
           @cart = get_list_of_items_in_cart
           @shipping = calculate_cart_shipping
           @subtotal = calculate_cart_items_cost
           @total = @shipping + @subtotal
           @order = Order.new
+        else
+          @schools = School.active.alphabetical
+        end
       else
         render action: 'new'
       end

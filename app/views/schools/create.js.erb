@@ -1,5 +1,6 @@
-console.log("Got Here");
-$("#checkout_form").replaceWith("<%= j render('stores/checkout_form') %>");
-console.log("Second");
+<% if current_user.role? :customer %>
+	$("#checkout_form").replaceWith("<%= j render('stores/checkout_form') %>");
+<% else %>
+	$("#active_schools").replaceWith("<%= j render('schools/active_schools') %>");
+<% end %>
 $('#ajaxModal').modal('hide');
-console.log("Finish");

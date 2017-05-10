@@ -55,7 +55,6 @@ $(document).ready(function(){
 // Right Click Functionality
 
 $(document).bind("contextmenu", function (event) {
-    
     event.preventDefault();    
     $(".custom-menu").finish().toggle(100).
     css({

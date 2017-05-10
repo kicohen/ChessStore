@@ -43,7 +43,11 @@
     <div class="form-group row">
     <label class="col-2 col-form-label">Role</label>
     <div class="col-10">
-   <%= f.input :role, collection: User::ROLES, wrapper: false, label: false, input_html: {class: "form-control" }%>
+    <% if current_user.role? :admin %>
+      <%= f.input :role, collection: User::ROLES, wrapper: false, label: false, input_html: {class: "form-control" }%>
+    <% else %>
+      <%= f.input :role, collection: User::EMPLOYEE_TYPES, wrapper: false, label: false, input_html: {class: "form-control" }%>
+    <% end %>
   </div>
   </div>
   <p><%= f.submit nil, :class => 'btn btn-success full-width' %></p>

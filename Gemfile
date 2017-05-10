@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'bootstrap', '~> 4.0.0.alpha6'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -77,4 +78,8 @@ group :test do
   gem 'single_test'
 end
 
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
