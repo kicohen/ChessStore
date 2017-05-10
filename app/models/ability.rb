@@ -40,12 +40,6 @@ class Ability
         can :manage, :all
     elsif user.role? :manager
         can :manage, :all
-        # can :read, :all
-        # can :cru, User, id: user.id
-        # can :cru, Employee
-        # can :crud, Item
-        # can :cr, ItemPrice
-        # can :cr, Purchase
     elsif user.role? :shipper
         can :ru, User, id: user.id
         can :read, Order

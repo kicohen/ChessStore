@@ -1,3 +1,4 @@
 $("#modalTitle").html(" <%= current_user.name %> ");
 $("#modalContent").replaceWith(" <%= j render('users/user_details') %> ");
+$("#modalButtons").replaceWith(" <%= j render('users/user_modal_buttons') %> ");
 $('#ajaxModal').modal('show');

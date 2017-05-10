@@ -17,14 +17,14 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Category</label>
     <div class="col-10">
-      <%= f.input :category, collection: Item::SELECT_OPTIONS, wrapper: false, label: false, input_html: {class: "form-control" } %>
+      <%= f.input :category, collection: Item::CATEGORIES, wrapper: false, label: false, input_html: {class: "form-control" } %>
     </div>
   <% else %>
   </div>
   <div class="form-group row">
     <label class="col-2 col-form-label">Category</label>
     <div class="col-10">
-      <%= f.input :category, collection: Item::SELECT_OPTIONS, :selected => "Select", wrapper: false, label: false, input_html: {class: "form-control" } %>
+      <%= f.input :category, collection: Item::CATEGORIES, :selected => "Select", wrapper: false, label: false, input_html: {class: "form-control" } %>
     </div>
   <% end %>
   </div>

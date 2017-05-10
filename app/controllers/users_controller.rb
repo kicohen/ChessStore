@@ -34,7 +34,14 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.active.customers.alphabetical
+    if not logged_in?
+      if current_user.role? :admin or current_user.role? :manager
+        @users = User.active.customers.alphabetical
+      else
+        redirect_to root_url
+      end
+    end  
+    redirect_to root_url 
   end
 
   def show
