@@ -60,6 +60,8 @@ class UsersController < ApplicationController
       "admin"
     elsif action_name == "show" and current_user.role? :customer
       "application"
+    elsif action_name == "edit" and not current_user.role? :customer
+      "admin"
     elsif action_name == "show"
       "admin"
     else 

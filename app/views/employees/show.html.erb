@@ -8,5 +8,7 @@
 
 
 <% content_for :pg_specific_links do %>
+<% if not @employee.role? :admin or current_user.role? :admin %>
    <li class="nav-item"><%= link_to "Edit Employee", edit_employee_path(@employee), class: "nav-link" %>
+<% end %>
 <% end %>

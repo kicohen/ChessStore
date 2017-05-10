@@ -1,7 +1,10 @@
+<% if not logged_in? or current_user.role? :customer%>
 <%= render partial: "partials/customer_nav" %>
 <br>
 <br>
 <br>
+<br>
+<% end %>
 
 <div class="container">
 <div class="row">

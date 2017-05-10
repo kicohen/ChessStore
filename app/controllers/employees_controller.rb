@@ -26,6 +26,9 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    if @employee.role? :admin and not current_user.role? :admin
+      redirect_to employee_path(@employee), notice: "Only adminstrators can edit admin accounts."
+    end
   end
 
   def update
