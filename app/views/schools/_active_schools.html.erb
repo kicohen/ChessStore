@@ -16,6 +16,14 @@
       </tr>
       <% end %>
   </table>
+    <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @purchases %>
+    </div>
+    <div class="page_buttons">
+      <%= will_paginate @purchases, :container => false %>
+    </div>
+  </div>
 </div>
 <br>
 <br>

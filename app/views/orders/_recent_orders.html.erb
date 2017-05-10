@@ -50,6 +50,14 @@
         </tbody>
       <% end %>
   </table>
+    <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @orders %>
+    </div>
+    <div class="page_buttons">
+      <%= will_paginate @orders, :container => false %>
+    </div>
+  </div>
 <br>
 <br>
 <% end %>

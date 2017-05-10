@@ -9,7 +9,7 @@ class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]  
 
   def index
-    @schools = School.active.alphabetical
+    @schools = School.active.alphabetical.paginate(:page => params[:page])
   end
 
   def new

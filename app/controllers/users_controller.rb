@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def index
     if logged_in?
       if current_user.role? :admin or current_user.role? :manager
-        @users = User.active.customers.alphabetical
+        @users = User.active.customers.alphabetical.paginate(:page => params[:page])
       else
         redirect_to root_url
       end

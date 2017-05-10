@@ -19,5 +19,13 @@
       <% end %>
     </tbody>
   </table>
+    <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @users %>
+    </div>
+    <div class="page_buttons">
+      <%= will_paginate @users, :container => false %>
+    </div>
+  </div>
 <% end %>
 <p>&nbsp;</p>

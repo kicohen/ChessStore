@@ -4,7 +4,7 @@ class ItemPricesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @active_items = Item.active.alphabetical.to_a
+    @active_items = Item.active.alphabetical.paginate(:page => params[:page])
   end
 
   def new
